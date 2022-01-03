@@ -1,0 +1,19 @@
+body{
+    background-repeat: no-repeat;
+    background-position: 0 -325px;
+}
+.container, .flex-nav{
+    width: 1024px;
+}
+.container .slider{
+    display: inline-block;
+    position: relative;
+    width: 450px;
+    height: 300px;
+    margin: 10px 10px 10px 50px;
+    font-size: 20px;
+}
+.container img{
+    width: 108%;
+    height: 100%;
+}

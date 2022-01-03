@@ -1,0 +1,37 @@
+.Burger{
+    display: none;
+ }
+.container{
+    width: 90%;
+}
+.nav-links-div{
+    display: initial;
+ }
+.flex-nav{
+    width: 90%;
+}
+.container p{
+    width: 50%;
+    margin: 10px 10px 10px 25px;
+    font-size: 16px;
+    padding-left: 4px;
+    border-left: solid grey;
+}
+.container h1{
+    font-size: 30px;
+    font-weight: 700;
+    width: 70%;
+    margin: 0px 10px 30px 10px;
+}
+.landingPage{
+    padding-top: 12px;
+    background-image: url("../images/gora.svg");
+    background-position: 240% 115%;
+    background-size: 78%;
+    background-repeat: no-repeat;
+}
+.grid-con{
+    display: grid;
+    grid-template-rows: 80%;
+    grid-template-columns: auto auto auto;
+}

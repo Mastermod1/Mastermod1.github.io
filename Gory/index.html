@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/tablet.css" media="(min-width:768px)">
+    <link rel="stylesheet" href="styles/laptop.css" media="(min-width:1024px)">
+    <link rel="stylesheet" href="styles/desktop.css" media="(min-width:1440px)">
+    <link rel="icon" href="images/mountICON.png">
+    <script src="scripts/functions.js"></script>
+    <title>Góry Świata</title>
+</head>
+<body id="Home">
+   <nav>
+      <div class="container">
+        <div class="flex-nav">
+          <a class="nav-links" href="#Home">Home</a>
+          <div class="nav-links-div">
+            <a class="nav-links" href="#GPolski">Góry Polski</a>
+            <a class="nav-links" href="#GSwiata">Góry Świata</a>
+            <a class="nav-links" href="#Contact">Kontakt</a>
+          </div>
+          <div class="Burger">
+              <div>
+                <div class="burg-"></div>
+                <div class="burg-"></div>
+                <div class="burg-"></div>
+              </div>
+              <div class="dropdown-content">
+                <a class="dropdown-links" href="#GPolski">Góry Polski</a>
+                <a class="dropdown-links" href="#GSwiata">Góry Świata</a>
+                <a class="dropdown-links" href="#Contact">Kontakt</a>
+              </div>
+          </div>
+        </div>
+      </div>
+   </nav>
+   <main>
+     <section>
+       <div class="container landingPage">
+        <h1>"Góry to walka, romantyzm,<br> ucieczka i sport." <br>~ Walter Bonati</h1>
+        <p>Góry to obiekty o nieokiełznanej naturze. Każda chwila,
+         każde sporzejnie i każdy wdech powodują narastający strach, lecz
+         wraz z nieustanną intesyfikacją zaczynamy odczuwać przerażający
+         spokój. Może być to mylne uczucie, dlatego w górach trzeba
+         zawsze trzymać się na baczności.</p>
+      </div>
+     </section>
+     <div class="container breakLine"></div>
+     <section id="GPolski">
+      <div class="container">
+        <h1> Szczyt Polski</h1>
+        <div class="slider">
+          <button onclick="sliderA.change(-1)"></button>
+          <img id="slider1" src="images/gora1.jpg">
+          <button onclick="sliderA.change(1)"></button>
+        </div>
+        <p>
+          Wyjazd w góry to idealny sposób na spędzenie czasu wolnego. Wędrówka po górskich szlakach nie tylko daje możliwość podziwiania malowniczych krajobrazów i niezwykłej przyrody, lecz także zmusza do wysiłku fizycznego i daje wytchnienie od codziennych trosk. Góry w Polsce to wiele niepowtarzalnych pasm z wysokimi szczytami, które pozwalają na spędzenie czasu na różne sposoby, dzięki czemu z pewnością każdy znajdzie tam miejsce idealne na letni lub zimowy wypoczynek. Przed wyjazdem polecamy odpowiednio się przygotować i zastanowić się nad swoimi oczekiwaniami co do wycieczki.
+        </p>
+      </div>
+     </section>
+     <div class="container breakLine"></div>
+     <section id="GSwiata">
+      <div class="container">
+        <h1> Szczyt Świata</h1>
+        <p>
+          Wbrew pozorom, najwyższe góry na świecie to nie te, o których często myślimy. Formalnie rzecz biorąc, Mount Everest jest najwyższą górą nad poziomem morza, ale biorąc pod uwagę wysokość względną od podstawy do wierzchołka, palma pierwszeństwa należy do Mauna Kea - wygasłego wulkanu na wyspie Big Island w archipelagu Hawajów.Everest wznosi się na wysokość 8848 m nad poziomem morza. Wysokość Mauna Kea to tylko 4205 m n.p.m., ale góra ciągnie się jeszcze około 6005 metrów pod powierzchnią Pacyfiku. Ponad połowa znajduje się pod wodą, tak więc wysokość  wynosi 10 210 metrów.
+        </p>
+        <div class="slider">
+          <button onclick="sliderB.change(-1)"></button>
+          <img id="slider2" src="images/gora1.jpg">
+          <button onclick="sliderB.change(-1)"></button>
+        </div>
+      </div>
+     </section>
+     <div class="container breakLine"></div>
+     <section id="Contact">
+      <div class="container">
+        <h1>Kontakt</h1>
+      </div>
+     </section>
+   </main>
+   <footer>
+    <div class="container">
+      <div class="grid-con">
+        <div>x </div>
+        <div>d </div>
+        <div>dd </div>
+      </div>
+    </div>
+   </footer>
+</body>
+</html>
