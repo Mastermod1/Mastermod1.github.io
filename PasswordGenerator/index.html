@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+</head>
+<style>
+    body{
+        background-color: darkcyan;
+    }
+    .container{
+        margin: 0 auto;
+        width: 50%;
+        height: 100%;
+    }
+    h1{
+        text-align: center;
+    }
+    #generUi{
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 40% auto;
+        justify-content: center;
+        justify-items: center;
+    }
+    label{
+        font-size: x-large;
+        text-transform: uppercase;
+    }
+</style>
+<body>
+    <div class="container">
+        <div>
+            <h1>Generate Password</h1>
+            <div id="generUi">
+                <label>Duże litery?</label>
+                <input type="checkbox">
+                <label>Cyfry?</label>
+                <input type="checkbox">
+                <label>Znaki specjalne?</label>
+                <input type="checkbox">
+                <label>Długość?</label>
+                <input type="number" min="1" max="48">
+                <input type="submit">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
