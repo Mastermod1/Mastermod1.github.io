@@ -1,5 +1,22 @@
-var plMnt = ["images/gora1.jpg","images/gora2.jpg","images/gora3.jpg"];
-var wrdMnt = ["images/gora1.jpg","images/gora2.jpg","images/gora3.jpg"];
+var apiUrl = "https://picsum.photos/v2/list";
+var plMnt = new Array(10);
+var wrdMnt = new Array(10);
+async function getapi(url){
+    const respone = await fetch(url);
+    var data = await respone.json();
+    let i = 0;
+    while(i < 10){
+        plMnt[i] = data[i].download_url;
+        i++;
+    }
+    while(i<20){
+        wrdMnt[i] = data[i].download_url;
+        i++;
+    }
+}
+getapi(apiUrl);
+
+
 class Slider{
     //Constructor
     constructor(sliderID,imagesList){
