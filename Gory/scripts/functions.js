@@ -1,6 +1,8 @@
-var apiUrl = "https://picsum.photos/v2/list";
-var plMnt = new Array(10);
-var wrdMnt = new Array(10);
+
+var plMnt = ["https://picsum.photos/450/300?random=1","https://picsum.photos/450/300?random=2","https://picsum.photos/450/300?random=3"];
+var wrdMnt = ["https://picsum.photos/450/300?random=4","https://picsum.photos/450/300?random=5","https://picsum.photos/450/300?random=6"];
+//Get photos from api and insert into arrays
+var apiUrl = "https://picsum.photos/v2/list?limit=20";
 async function getapi(url){
     const respone = await fetch(url);
     var data = await respone.json();
@@ -14,7 +16,6 @@ async function getapi(url){
         i++;
     }
 }
-getapi(apiUrl);
 
 
 class Slider{
@@ -23,8 +24,10 @@ class Slider{
         this.sliderID = sliderID;
         this.imagesList = imagesList;
         this.i = 0;
+        this.setSrc(); //Sets 1st photo from array
     }
-    //Method
+    //Methods
+    //Change photo, direction -/+ 1 = left/right
     change(direction)
     {   
         let slideNum = this.i;
@@ -41,6 +44,11 @@ class Slider{
         }
         slider.src = images[slideNum];
         this.i = slideNum;
+    }
+    setSrc(){
+        let slider = document.getElementById(this.sliderID);
+        let images = this.imagesList;
+        slider.src = images[0];
     }
 }
 var sliderA = new Slider("slider1",plMnt);
