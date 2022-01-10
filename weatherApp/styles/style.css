@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+/* Small devices <600px */
+@media only screen and (max-width: 600px){
+	#container{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.weatherWidget{
+		height: 21vh;
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		padding: 20px;
+		border: 3px solid black;
+		border-radius: 12px;
+	}
+	h1,h2,h3,h4,h5,h6{
+		font-family: Oswald;
+		margin: 2px 0;
+		text-align: center;
+	}
+}
+/* Medium devices >600px */
+@media only screen and (min-width: 600px){
+	#container{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.weatherWidget{
+		height: 220px;
+		padding: 20px;
+		border: 3px solid black;
+		border-radius: 12px;
+	}
+	h1,h2,h3,h4,h5,h6{
+		font-family: Oswald;
+		margin: 10px 0;
+		text-align: center;
+	}
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px){
+	
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px){
+	
+}
+body{
+	background-color: royalblue;
+	user-select: none;
+}
+h1{
+	font-size: 350%;
+}
+h2{
+	font-size: 200%;
+}
+h3{
+	font-size: 180%;
+}
+.weatherWidget{
+	background-color: whitesmoke;
+}
+#inputCity{
+	border-bottom: 2px solid black;
+	background-color: whitesmoke;
+	border-radius: 10px;
+	font-family: Oswald;
+	font-size: 20px;
+	padding: 6px 8px;
+}
+#weather{
+	margin: 20px;
+	opacity: 0;
+}
+#button{
+	margin: 5px 0;
+	padding: 4px 0;
+	background-color: whitesmoke;
+	border-radius: 10px;
+	box-shadow: 4px 3px 8px black;
+	/*Font*/
+	font-family: Oswald;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: center;
+}
+#button:active{
+	background-color: rgb(230,230,230);
+	transform: scale(98%);
+	transition-duration: 0.1s;
+}
+#icon{
+	background-color: royalblue;
+    border-radius: 50%;
+	box-shadow: 7px 4px 7px lightgrey;
+}
+
+
