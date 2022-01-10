@@ -6,10 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="portfolio.png">
     <title>Mastermod's portfolio</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgb(230, 230, 230);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+        .container{
+            background-color: whitesmoke;
+            border: 2px solid rgb(0, 174, 255);
+            border-radius: 7px;
+            padding: 10px 20px 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        a{
+           background-color: whitesmoke;
+           text-align: center;
+           color: black;
+           text-decoration: none;
+           font-size: 32px;
+           padding: 10px;
+           margin: 6px 0;
+           border: 2px solid rgb(0, 174, 255);
+           border-radius: 5px;
+           width: 300px; 
+        }
+        a:hover{
+            background-color: rgb(238, 237, 237);
+        }
+        h1{
+            padding: 0;
+            margin: 10px 0;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+    </style>
 </head>
 <body>
-    <a href="PasswordGenerator/index.html">PasswordGenerator</a>
-    <a href="Gory/index.html">Mountains</a>
-    <a href="CardDesign/index.html">CardDesign</a>
+    <div class="center">
+        <div class="container">
+            <h1>Chose project:</h1>
+            <a href="PasswordGenerator/index.html">Password Generator</a>
+            <a href="Gory/index.html">Mountains</a>
+            <a href="CardDesign/index.html">Card Design</a>
+            <a href="weatherApp/index.html">Weather App</a>
+        </div>
+    </div>
 </body>
 </html>
