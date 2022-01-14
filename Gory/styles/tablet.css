@@ -35,3 +35,6 @@
     grid-template-rows: 80%;
     grid-template-columns: auto auto auto;
 }
+.slider img{
+    width: 100%;
+}

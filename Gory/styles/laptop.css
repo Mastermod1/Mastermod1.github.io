@@ -33,24 +33,53 @@ body{
     height: 300px;
     margin: 10px 10px 10px 50px;
     font-size: 20px;
+    user-select: none;
 }
-.slider button{
-    display: inline-block;
+/*Next photo button for Slider*/
+.arrowChange,.arrowChangeL{
     position: absolute;
-    top: 42%;
-    height: 65px;
-    width: 35px;
-    background-size: auto;
-    background-color: none;
+    top: calc(50% - 30px);
+    height: 60px;
+    width: 40px;
+    background-color: rgba(0, 0, 0, .2);
 }
-.slider button:nth-of-type(1){
-    background-image: url(../images/left.png);
-    left:0;
+.arrowChangeL{
+    right: -35px;
 }
-.slider button:nth-of-type(2){
-    background-image: url(../images/right.png);
-    left: 100%;
+.arrowChange:before,
+.arrowChange:after,
+.arrowChangeL:before,
+.arrowChangeL:after{
+    content: "";
+    position: absolute;
+    background-color: white;
+    transform: rotate(-45deg);
+    width: 40px;
+    height: 5px;
 }
+.arrowChange::before,.arrowChangeL:before{
+    top:15px
+}
+.arrowChange::after{
+    transform: rotate(45deg);
+    bottom: 15px;
+}
+.arrowChangeL:before{
+    transform: rotate(45deg);
+}
+.arrowChangeL::after{
+    transform: rotate(-45deg);
+    bottom: 15px;
+}
+.arrowChange:hover,
+.arrowChangeL:hover{
+    transform: scale(1.15);
+}
+.arrowChange:active,
+.arrowChangeL:active{
+    transform: scale(1.05);
+}
+
 .container img{
     width: 109%;
     height: 100%;
