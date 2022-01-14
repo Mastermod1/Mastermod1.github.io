@@ -103,19 +103,21 @@ footer .container{
 }
 .slider img{
     width: 100%;
+}
+.slider{
     position: relative;
 }
 .arrowChange,.arrowChangeL{
     z-index: 1;
     position: absolute;
     transform: translate(0%,-50%);
-    top: 42%;
+    top: 50%;
     height: 60px;
     width: 40px;
     background-color: rgba(0, 0, 0, .2);
 }
 .arrowChangeL{
-    right: 10px;
+    right: 0px;
 }
 .arrowChange:before,
 .arrowChange:after,
@@ -142,12 +144,8 @@ footer .container{
     transform: rotate(-45deg);
     bottom: 15px;
 }
-.arrowChange:hover,
-.arrowChangeL:hover{
-    transform: scale(1.15);
-}
 .arrowChange:active,
 .arrowChangeL:active{
-    transform: scale(1.05);
+    background-color: rgba(0, 0, 0, .3);
 }
 
