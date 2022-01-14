@@ -38,7 +38,7 @@ body{
 /*Next photo button for Slider*/
 .arrowChange,.arrowChangeL{
     position: absolute;
-    top: calc(50% - 30px);
+    top: calc(50%);
     height: 60px;
     width: 40px;
     background-color: rgba(0, 0, 0, .2);
@@ -70,14 +70,6 @@ body{
 .arrowChangeL::after{
     transform: rotate(-45deg);
     bottom: 15px;
-}
-.arrowChange:hover,
-.arrowChangeL:hover{
-    transform: scale(1.15);
-}
-.arrowChange:active,
-.arrowChangeL:active{
-    transform: scale(1.05);
 }
 
 .container img{
