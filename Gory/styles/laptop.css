@@ -26,7 +26,7 @@ body{
     padding-left: 4px;
     border-left: solid grey;
 }
-.container .slider{
+.slider{
     display: inline-block;
     position: relative;
     width: 390px;
@@ -81,5 +81,5 @@ body{
     font-size: 50px;
     font-weight: 700;
     width: 900px;
-    margin: 0px 10px 40px 10px;
+    margin: 10px 10px 20px 10px;
 }
