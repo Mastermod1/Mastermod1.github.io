@@ -36,7 +36,7 @@ main{
     background-repeat: no-repeat;
 }
 
-a{
+nav a{
     text-decoration: none;
     color:white;
     font-weight: bold;
@@ -45,7 +45,7 @@ a{
 .container p::first-line{
     text-indent:20px;
 }
-a:hover{
+nav a:hover{
     color:rgb(202, 150, 81);
 }
 .breakLine{
@@ -98,7 +98,11 @@ a:hover{
     font-weight: 700;
     margin: 5px 10px 10px 10px;
 }
-.container p{
+h6{
+    font-size: 20px;
+    font-weight: 700;
+}
+.articleTxt{
     margin: 20px 0 0 5px;
     font-size: 20px;
     padding-left: 10px;
@@ -108,7 +112,6 @@ footer{
     background-color: black;
 }
 footer .container{
-    height: 200px;
     margin: 0 auto;
     color: white;
 }
@@ -165,8 +168,54 @@ footer .container{
 .landingPage p{
     margin-top: 44%;
 }
+
+/* Form */
+section input[type=text]{
+    width: 95%;
+    height: 20px;
+    border-radius: 5px;
+    border: solid 1px gray;
+    margin-bottom: 10px;
+}
 textarea{
     resize: none;
     width: 95%;
+    border: solid 1px gray;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.button{
+    border-radius: 16px;
+    border-width: 1px;
+    padding: 5px 8px;
+    background-color: whitesmoke;
+    border-color: gray;
+    box-shadow: rgba(128, 128, 128, 0.527) 1px 3px 5px;
+}
+section input[type=submit]{
+    float: right;
+    margin-right: 4%;
+}
+/* Footer */
+.grid-con{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px;
+    flex-direction: column;
+}
+footer a{
+    display: block;
+    margin: 5px 0;
+    color: whitesmoke;
+}
+footer p{
+    font-size: 12px;
+}
+.grid-con input[type=mail]{
+    border: solid 1px gray;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin: 5px 10px 10px 0;
+
 }
 

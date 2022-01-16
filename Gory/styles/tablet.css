@@ -10,7 +10,7 @@
 .flex-nav{
     width: 90%;
 }
-.container p{
+.articleTxt{
     width: 100%;
     margin: 10px 10px 10px 5px;
     font-size: 16px;
@@ -37,5 +37,11 @@
 }
 .landingPage p{
     width: 50%;
+}
+.grid-con{
+    flex-direction: row;
+}
+.grid-con p{
+    width: 300px;
 }
 

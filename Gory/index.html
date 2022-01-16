@@ -39,7 +39,7 @@
      <section>
        <div class="landingPage container ">
         <h1>"Góry to walka, romantyzm,<br> ucieczka i sport." <br>~ Walter Bonati</h1>
-        <p>Góry to obiekty o nieokiełznanej naturze. Każda chwila,
+        <p class="articleTxt">Góry to obiekty o nieokiełznanej naturze. Każda chwila,
          każde sporzejnie i każdy wdech powodują narastający strach, lecz
          wraz z nieustanną intesyfikacją zaczynamy odczuwać przerażający
          spokój. Może być to mylne uczucie, dlatego w górach trzeba
@@ -55,7 +55,7 @@
           <img id="slider1">
           <span onclick="sliderA.change(+1)" class="arrowChangeL"></span>
         </div>
-        <p>
+        <p class="articleTxt">
           Wyjazd w góry to idealny sposób na spędzenie czasu wolnego. Wędrówka po górskich szlakach nie tylko daje możliwość podziwiania malowniczych krajobrazów i niezwykłej przyrody, lecz także zmusza do wysiłku fizycznego i daje wytchnienie od codziennych trosk. Góry w Polsce to wiele niepowtarzalnych pasm z wysokimi szczytami, które pozwalają na spędzenie czasu na różne sposoby, dzięki czemu z pewnością każdy znajdzie tam miejsce idealne na letni lub zimowy wypoczynek. Przed wyjazdem polecamy odpowiednio się przygotować i zastanowić się nad swoimi oczekiwaniami co do wycieczki.
         </p>
       </div>
@@ -73,7 +73,7 @@
           <img id="slider2">
           <span onclick="sliderB.change(+1)" class="arrowChangeL"></span>
         </div>
-        <p>
+        <p class="articleTxt">
           Wbrew pozorom, najwyższe góry na świecie to nie te, o których często myślimy. Formalnie rzecz biorąc, Mount Everest jest najwyższą górą nad poziomem morza, ale biorąc pod uwagę wysokość względną od podstawy do wierzchołka, palma pierwszeństwa należy do Mauna Kea - wygasłego wulkanu na wyspie Big Island w archipelagu Hawajów.Everest wznosi się na wysokość 8848 m nad poziomem morza. Wysokość Mauna Kea to tylko 4205 m n.p.m., ale góra ciągnie się jeszcze około 6005 metrów pod powierzchnią Pacyfiku. Ponad połowa znajduje się pod wodą, tak więc wysokość  wynosi 10 210 metrów.
         </p>
       </div>
@@ -89,7 +89,7 @@
           <input id="topic" type="text"><br>
           <label for="text">Treść</label><br>
           <textarea id="text" rows="10"></textarea><br>
-          <input type="submit" value="Wyślij">
+          <input class="button" type="submit" value="Wyślij">
         </form>
       </div>
      </section>
@@ -97,9 +97,24 @@
    <footer>
     <div class="container">
       <div class="grid-con">
-        <div>x </div>
-        <div>d </div>
-        <div>dd </div>
+        <div>
+          <h6>Newsletter</h6>
+          <input type="mail"><input class="button" type="submit" value="Subscribe">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam elementum luctus urna. Nullam vitae lectus tincidunt, varius dui eu, imperdiet lorem. Quisque et gravida mauris, ac tempor erat. Cras ut vulputate ligula. Vestibulum enim diam, eleifend pulvinar sem non, efficitur elementum augue. Mauris odio nisi, ultrices non lorem id, auctor facilisis ipsum.</p>
+
+          </div>
+        <div>
+          <h6>Prawne</h6>
+          <ol>
+            <a href="link">Act</a>
+            <a href="link">Privacy</a>
+            <a href="link">Licences</a>
+          </ol>
+        </div>
+        <div>
+          <h6>Cele</h6>
+          <p>Vivamus sit amet felis posuere, feugiat elit pulvinar, suscipit enim. Pellentesque consequat congue nisl, sed iaculis nulla egestas ultrices. Donec dignissim eu sem eu feugiat. Nulla iaculis faucibus finibus. Quisque vestibulum, elit sit amet pulvinar cursus, nulla nulla sagittis enim, non fringilla justo massa ut magna. Etiam quis aliquet libero. Morbi volutpat efficitur commodo. Suspendisse elementum metus ac urna vehicula ornare.</p>
+        </div>
       </div>
     </div>
    </footer>
