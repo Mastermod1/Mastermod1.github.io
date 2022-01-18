@@ -15,7 +15,7 @@ body{
     width: 900px;
 }
 .landingPage{
-    background-position: 460px 120px;
+    background-position: 460px 150px;
     background-size: 710px;
 }
 .articleTxt{
@@ -102,14 +102,6 @@ textarea{
     border: solid 1px gray;
     border-radius: 5px;
     margin-bottom: 10px;
-}
-.button{
-    border-radius: 16px;
-    border-width: 1px;
-    padding: 5px 8px;
-    background-color: whitesmoke;
-    border-color: gray;
-    box-shadow: gray 1px 3px 5px;
 }
 section input[type=submit]{
     float: right;
