@@ -93,6 +93,42 @@ nav a:hover{
 .nav-links-div{
     display: none;
  }
+q{
+    display: block;
+    font-size: 1.5em;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border:  2px solid black;
+    padding: 30px 30px;
+    text-align: center;
+    position: relative;
+}
+q::before{
+    content: "\201D";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 60px;
+    height: 45px;
+}
+q::after{
+    content: "\201D";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    font-size: 60px;
+    height: 45px;
+}
+q cite{
+    display: block;
+    position: absolute;
+    background-color: rgba(219,219,222);
+    right: 25px;
+    bottom: -5px;
+}
 .container h1{
     font-size: 2.5em;
     font-weight: 700;
@@ -216,6 +252,6 @@ footer p{
     border-radius: 5px;
     padding: 3px 5px;
     margin: 5px 10px 10px 0;
-
 }
+
 

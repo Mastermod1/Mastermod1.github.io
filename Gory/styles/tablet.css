@@ -27,7 +27,7 @@
     padding-top: 12px;
     background-image: url("../images/gora.svg");
     background-position: 240% 115%;
-    background-size: 78%;
+    background-size: 75%;
     background-repeat: no-repeat;
 }
 .grid-con{
@@ -36,7 +36,7 @@
     grid-template-columns: auto auto auto;
 }
 .landingPage p{
-    width: 50%;
+    width: 58%;
     margin-top: 0;
 }
 .grid-con{
@@ -45,4 +45,40 @@
 .grid-con p{
     width: 300px;
 }
-
+q{
+    display: block;
+    font-size: 1.5em;
+    width: 70%;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border:  2px solid black;
+    padding: 30px 30px;
+    text-align: center;
+    position: relative;
+}
+q::before{
+    content: "\201D";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 60px;
+    height: 45px;
+}
+q::after{
+    content: "\201D";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    font-size: 60px;
+    height: 45px;
+}
+q cite{
+    display: block;
+    position: absolute;
+    background-color: rgba(219,219,222);
+    right: 35px;
+    bottom: -5px;
+}

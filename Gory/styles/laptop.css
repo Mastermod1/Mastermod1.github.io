@@ -15,8 +15,12 @@ body{
     width: 900px;
 }
 .landingPage{
-    background-position: 460px 150px;
+    background-position: 460px 90px;
     background-size: 710px;
+}
+.landingPage p{
+    margin-left: 0;
+    width: 56%;
 }
 .articleTxt{
     display: inline-block;
