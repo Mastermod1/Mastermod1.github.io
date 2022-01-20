@@ -12,8 +12,8 @@
 }
 .articleTxt{
     width: 100%;
-    margin: 10px 10px 10px 5px;
-    font-size: 16px;
+    margin: 10px 10px 0px 5px;
+    font-size: 20px;
     padding-left: 4px;
     border-left: solid grey;
 }
@@ -26,7 +26,7 @@
 .landingPage{
     padding-top: 12px;
     background-image: url("../images/gora.svg");
-    background-position: 240% 115%;
+    background-position: 235% 99%;
     background-size: 75%;
     background-repeat: no-repeat;
 }
@@ -48,7 +48,7 @@
 q{
     display: block;
     font-size: 1.5em;
-    width: 70%;
+    width: 80%;
     box-sizing: border-box;
     margin-top: 20px;
     margin-bottom: 20px;

@@ -31,7 +31,7 @@ main{
 }
 .landingPage{
     background-image: url("../images/gora.svg");
-    background-position: 40% 47%;
+    background-position: 40% 29%;
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -138,11 +138,16 @@ h6{
     font-size: 20px;
     font-weight: 700;
 }
-.articleTxt{
+
+.articleTxt,
+.articleCont{
     margin: 20px 0 0 5px;
     font-size: 20px;
     padding-left: 10px;
     border-left: solid grey;
+}
+.articleCont{
+    margin-top: 0;
 }
 footer{
     background-color: black;

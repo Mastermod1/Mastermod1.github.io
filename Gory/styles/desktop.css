@@ -2,15 +2,16 @@ body{
     background-repeat: no-repeat;
     background-position: 0 -325px;
 }
+.landingPage{
+    background-position: 560px 110px;
+}
 .container, .flex-nav{
     width: 1024px;
 }
 .container .slider{
-    display: inline-block;
-    position: relative;
     width: 450px;
     height: 300px;
-    margin: 10px 10px 10px 50px;
+    margin: 15px 25px 10px 50px;
     font-size: 20px;
 }
 .slider img{
