@@ -76,7 +76,7 @@ body{
     bottom: 15px;
 }
 
-.container img{
+.slider img{
     width: 109%;
     height: 100%;
 }
@@ -110,4 +110,14 @@ textarea{
 section input[type=submit]{
     float: right;
     margin-right: 0;
+}
+/* Switch card */
+.switchCard div{
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+.content p{
+    padding: 30px 30px 50px 30px;
+    font-size: 18px;
 }

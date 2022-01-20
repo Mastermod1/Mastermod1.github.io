@@ -82,3 +82,7 @@ q cite{
     right: 35px;
     bottom: -5px;
 }
+/* Switch card */
+.switchCard .content::after{
+    display: none;
+}
