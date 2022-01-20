@@ -118,7 +118,7 @@ section input[type=submit]{
     margin-right: 0;
 }
 /* Switch card */
-.switchCard div{
+#switchCard{
     width: 500px;
     margin: 0 auto;
     position: relative;
