@@ -1,64 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="portfolio.png">
     <title>Mastermod's portfolio</title>
-    <style>
-        body{
-            margin: 0;
-            padding: 0;
-            background-color: rgb(230, 230, 230);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100vw;
-            height: 100vh;
-            font-family: sans-serif;
-        }
-        .container{
-            background-color: whitesmoke;
-            border: 2px solid rgb(0, 174, 255);
-            border-radius: 7px;
-            padding: 10px 20px 40px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        a{
-           background-color: whitesmoke;
-           text-align: center;
-           color: black;
-           text-decoration: none;
-           font-size: 32px;
-           padding: 10px;
-           margin: 6px 0;
-           border: 2px solid rgb(0, 174, 255);
-           border-radius: 5px;
-           width: 300px; 
-        }
-        a:hover{
-            background-color: rgb(238, 237, 237);
-        }
-        h1{
-            padding: 0;
-            margin: 10px 0;
-            text-transform: uppercase;
-            font-weight: normal;
-        }
-    </style>
+    <!-- BootStrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
-    <div class="center">
-        <div class="container">
-            <h1>Chose project:</h1>
-            <a href="PasswordGenerator/index.html">Password Generator</a>
-            <a href="Gory/index.html">Mountains</a>
-            <a href="CardDesign/index.html">Card Design</a>
-            <a href="weatherApp/index.html">Weather App</a>
+<body class="bg-light bg-gradient">
+    <div class="container-lg p-0">
+        <div class="position-relative"> 
+            <h1 class="display-1 text-light position-absolute top-50 start-50 translate-middle">Welcome</h1>
+            <img class="img-fluid" src="https://i.picsum.photos/id/353/1920/1080.jpg?hmac=n0nZKXMouKn3eIwf-dSCrClCTtBzRYXvutncrKJeIg8">
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Mastermod1</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Description</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Projects</a>
+                  </li>
+                </ul>  
+              </div>
+            </div>
+          </nav>
+        <div class="vh-100 border border-start border-end">
+            <div class="row h-100 m-0">
+                <div class="col-12 col-md-6 col-lg-4  border-end bg-light">
+                    <h2 class="text-center pt-2">About me:</h2>
+                    <img src="account.png" class="img-fluid p-4">
+                    <p class="p-1">I enjoy learning and coding. I watch a lot of science and programming videos on youtube. I'm also keen on the hardware side of computers so I often know about new graphic cards, processors and new technologies. I would like to work in software's industry, because it gives me an oppurtinity to develop myself.</p>
+                </div>
+                <div class="col bg-light ">
+                    <ul class="">
+                        <li><a href="https://mastermod1.github.io/Gory/index.html">Mountains</a></li>
+                        <li><a href="https://mastermod1.github.io/weatherApp/index.html">WeatherApp</a></li>
+                        <li><a href="https://mastermod1.github.io/CardDesign/index.html">CardDesign</a></li>
+                        <li><a href="https://mastermod1.github.io/PasswordGenerator/index.html">PasswordGenerator</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-dark">
+            <div class="row m-0">
+                <div class="col-4">
+                    1
+                </div>
+                <div class="col">
+                    2
+                </div>
+            </div>
         </div>
     </div>
 </body>
