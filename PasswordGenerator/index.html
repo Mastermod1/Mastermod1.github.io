@@ -9,6 +9,7 @@
 <style>
     :root{
         --background: rgb(192,192,192);
+        --darkGray: rgb(128,128,128);
         --blue: rgb(0,0,128);
         --white: rgb(255,255,255);
     }
@@ -44,57 +45,64 @@
         width: 400px;
         margin: 0 auto;
         padding: 45px 5px 15px 5px;
-        border: solid 4px var(--blue);
+        border-top: solid 2px var(--darkGray);
+        border-bottom: solid 2px black;
+        border-left: solid 2px var(--darkGray);
+        border-right: solid 3px black;
         box-shadow: rgba(124, 124, 124, 0.383) 8px 5px 5px;
     }
     #topBar{
         position: absolute;
         top: 0;
-        width: 100%;
+        width: 409px;
         height: 30px;
+        left: 0px;
         background-color: var(--blue);
+        box-shadow: var(--darkGray) 1px 1px 0;
     }
     #topBar p{
         color: white;
         width: 100%;
         padding: 0;
-        margin: 0;
+        margin: 3px 0 0 3px;
     }
     #topBar span{
         position: absolute;
-        top: 0;
+        top: 3px;
         right: 0;
-        width: 20px;
-        background-color: var(--background);
+        font-size: 12px;
+        width: 18px;
         text-align: center;
         margin: 2px 5px;
+        box-shadow: none;
     }
     #result{
         margin: 0 auto;
         text-align: center;
         padding-top: 10px;
-        padding-bottom: 5px;
+        padding-bottom: 8px;
         font-size: 18px;
     }
-    #button{
+    .button{
         user-select: none;
         box-sizing: border-box;
+        cursor: pointer;
+        background-color: var(--background);
+        border-top: 2px solid white;
+        border-left: 2px solid white;
+        border-bottom: 2px solid var(--darkGray);
+        border-right: 2px solid var(--darkGray);
+        box-shadow: var(--darkGray) 2px 2px 3px;
+        transition: box-shadow .3s ease,
+        transform .05s;
+    }
+    .button:active{
+        box-shadow: var(--darkGray) 1px 1px 5px;
+        transform: translateY(1px);
+    }
+    #button{    
         margin: 10px 0;
         padding: 5px;
-        cursor: pointer;
-        background-color: rgb(212,208,200);
-        border-width: 3px;
-        border-color: rgb(138, 138, 138);
-        border-style: solid;
-        border-top: none;
-        border-left: none;
-        box-shadow: gray 2px 3px 5px;
-        transition: box-shadow .3s ease,
-        transform .15s ease;
-    }
-    #button:active{
-        box-shadow: gray 1px 1px 5px;
-        transform: translateY(2px);
     }
 </style>
 <body>
@@ -102,7 +110,7 @@
         <div id="box">
             <div id="topBar">
                 <p>Password Generator</p>
-                <span>X</span>
+                <span class="button">X</span>
             </div>
             <div id="generUi">
                 <label>Małe litery?</label>
@@ -116,7 +124,7 @@
                 <label>Długość?</label>
                 <input id="length" type="number" value="7" min="1" max="48">
             </div>
-            <div id="button" onclick="xd()">Generate</div>
+            <div id="button" class="button" onclick="xd()">Generate</div>
             <div id="result" style="height:16px;border-bottom: 1px solid black; width: 50%"></div>
         </div>
     </div>
