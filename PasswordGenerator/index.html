@@ -7,6 +7,7 @@
     <title>Password Generator</title>
 </head>
 <style>
+    @import url('http://fonts.cdnfonts.com/css/w95fa');
     :root{
         --background: rgb(192,192,192);
         --darkGray: rgb(128,128,128);
@@ -15,36 +16,41 @@
     }
     body{
         background-color: rgb(223, 223, 223);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'W95FA', sans-serif;
     }
     .container{
         margin: 0 auto;
         width: 50%;
         height: 100%;
+        user-select: none;
     }
     h1{
         text-align: center;
     }
-    #generUi{
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: center;
-        justify-items: center;
+    #box p{
+        margin: 2px 20px 2px 20px;
     }
-    label{
-        font-size: x-large;
+    #option{
+        margin: 0 20px 10px 20px;
+        padding: 2px;
+        width: 358px;
+        border-top: solid 2px black;
+        border-bottom: solid 2px white;
+        border-left: solid 2px black;
+        border-right: solid 2px white;
+    }
+    #lenBox{
+        margin: 0 20px 20px 20px;
     }
     #box{
         display: flex;
         position: relative;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         background-color: var(--background);
         width: 400px;
+        padding-top: 31px;
         margin: 0 auto;
-        padding: 45px 5px 15px 5px;
         border-top: solid 2px var(--darkGray);
         border-bottom: solid 2px black;
         border-left: solid 2px var(--darkGray);
@@ -54,7 +60,7 @@
     #topBar{
         position: absolute;
         top: 0;
-        width: 409px;
+        width: 400px;
         height: 30px;
         left: 0px;
         background-color: var(--blue);
@@ -64,7 +70,7 @@
         color: white;
         width: 100%;
         padding: 0;
-        margin: 3px 0 0 3px;
+        margin: 5px 0 0 3px;
     }
     #topBar span{
         position: absolute;
@@ -82,6 +88,8 @@
         padding-top: 10px;
         padding-bottom: 8px;
         font-size: 18px;
+        user-select: text;
+        margin-bottom: 5px;
     }
     .button{
         user-select: none;
@@ -95,14 +103,22 @@
         box-shadow: var(--darkGray) 2px 2px 3px;
         transition: box-shadow .3s ease,
         transform .05s;
+        
     }
     .button:active{
         box-shadow: var(--darkGray) 1px 1px 5px;
         transform: translateY(1px);
     }
-    #button{    
+    #button{
+        position: absolute;
+        bottom: 0;
+        right: 16px;    
         margin: 10px 0;
         padding: 5px;
+        float: right;
+    }
+    input[type=number]{
+        width: 200px;
     }
 </style>
 <body>
@@ -112,16 +128,19 @@
                 <p>Password Generator</p>
                 <span class="button">X</span>
             </div>
-            <div id="generUi">
-                <label>Małe litery?</label>
+            <p>Settings for password:</p>
+            <div id="option">
                 <input id="smlLett" type="checkbox" checked>
-                <label>Duże litery?</label>
+                <label>Lowercase letters?</label><br>
                 <input id="bigLett" type="checkbox">
-                <label>Cyfry?</label>
+                <label>Uppercase letters?</label><br>
                 <input id="numb" type="checkbox">
-                <label>Znaki specjalne?</label>
+                <label>Numbers?</label><br>
                 <input id="special" type="checkbox">
-                <label>Długość?</label>
+                <label>Special characters?</label><br>
+            </div>
+            <div id="lenBox">
+                <label>Password length:</label>
                 <input id="length" type="number" value="7" min="1" max="48">
             </div>
             <div id="button" class="button" onclick="xd()">Generate</div>
