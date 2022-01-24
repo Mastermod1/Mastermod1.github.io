@@ -58,25 +58,25 @@
         border-right: solid 3px black;
         box-shadow: rgba(124, 124, 124, 0.383) 8px 5px 5px;
     }
-    #topBar{
+    .topBar{
         position: absolute;
         top: 0;
-        width: 400px;
+        width: 100%;
         height: 30px;
         left: 0px;
         background-color: var(--blue);
         box-shadow: var(--darkGray) 1px 1px 0;
     }
-    #topBar p{
+    .topBar p{
         color: white;
         width: 100%;
-        padding: 0;
-        margin: 5px 0 0 3px;
+        padding: 3px 0;
+        margin: 0;
     }
-    #topBar span{
+    .topBar span{
         position: absolute;
-        top: 3px;
-        right: 0;
+        top: 4px;
+        right: 1px;
         font-size: 12px;
         width: 18px;
         text-align: center;
@@ -120,12 +120,35 @@
     }
     input[type=number]{
         width: 200px;
+        margin-bottom: 30px;
+    }
+    #alert{
+        display: none;
+        position: absolute;
+        padding: 31px 8px 38px 8px;
+        min-width: 150px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: var(--background);
+        border-top: solid 2px var(--darkGray);
+        border-bottom: solid 2px black;
+        border-left: solid 2px var(--darkGray);
+        border-right: solid 3px black;
     }
 </style>
 <body>
     <div class="container">
         <div id="box">
-            <div id="topBar">
+            <div id="alert">
+                <div class="topBar">
+                    <p>Password</p>
+                    <span class="button" onclick="hideAlert()">X</span>
+                </div>
+                <div id="result"></div>
+                <div id="button" class="button" onclick="copyToClipboard()">Coppy Password</div>
+            </div>
+            <div class="topBar">
                 <p>Password Generator</p>
                 <span class="button">X</span>
             </div>
@@ -142,22 +165,25 @@
             </div>
             <div id="lenBox">
                 <label>Password length:</label>
-                <input id="length" type="number" value="7" min="1" max="48">
+                <input id="length" type="number" value="7" min="1" max="128">
             </div>
-            <div id="button" class="button" onclick="xd()">Generate</div>
-            <div id="result" style="height:16px;border-bottom: 1px solid black; width: 50%"></div>
+            <div id="button" class="button" onclick="generatePasswd()">Generate</div>
         </div>
     </div>
     
     <script>
-        
-        function xd(){
+        function hideAlert(){
+            let alert = document.getElementById("alert");
+            alert.style.display = "none";
+        }
+        function generatePasswd(){
             // DOM ELEMENTS
             let smlLett = document.getElementById("smlLett").checked;
             let bigLett = document.getElementById("bigLett").checked;
             let numb = document.getElementById("numb").checked;
             let special = document.getElementById("special").checked;
             let length = document.getElementById("length").value;
+            let alert = document.getElementById("alert");
             let result = document.getElementById("result");
             // Elements
             let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -175,6 +201,10 @@
                 mixed.push(numbers);
             if(special)
                 mixed.push(sign);
+            // Set max length
+            if(length > 128){
+                length = 128;
+            }
             // Random signs
             for(let i = 0; i < length; i++){
                 let setNumber = random(0,mixed.length);
@@ -182,12 +212,15 @@
                 password += mixed[setNumber][charNum];
             }
             result.innerHTML = password;
+            alert.style.display = "block";
+        }
+        function copyToClipboard(){
+            let result = document.getElementById("result");
+            navigator.clipboard.writeText(result.innerHTML);
         }
         function random(min,max){
             return Math.floor(Math.random() * (max - min)) + min;
         }
-        
-        
     </script>
 </body>
 </html>
