@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoList</title>
     <style>
+        @import url('https://fonts.cdnfonts.com/css/watterbite-personal-use');
         body{
             background-color: cadetblue;
+            font-family: 'Watterbite Personal Use', sans-serif;
         }
         #listDiv{
             width: 400px;
@@ -26,6 +28,7 @@
             border-radius: 10%;
             padding: 2px 5px;
             width: 88%;
+            word-wrap: break-word;
         }
         #list span{
             position: absolute;
@@ -36,9 +39,11 @@
             height: 24px;
             text-align: center;
             font-weight: bold;
+            cursor: pointer;
         }
         h1{
             text-align: center;
+            
         }
         [contenteditable] {
             outline: none;
@@ -59,11 +64,17 @@
         let listItems = document.getElementsByTagName("li");
         let updater = document.getElementById("updater");
         let listItemsLength = listItems.length;
+        const changeColor = function(){
+            this.style.textDecoration = "line-through";
+        }
         function addListItem(){
-            let newListItem = document.createElement("li");
-            newListItem.innerHTML = updater.innerHTML;
-            updater.innerHTML = "";
-            list.insertBefore(newListItem, updater);
+            if(updater.innerHTML !== ""){
+                let newListItem = document.createElement("li");
+                newListItem.addEventListener("click",changeColor)
+                newListItem.innerHTML = updater.innerHTML;
+                updater.innerHTML = "";
+                list.insertBefore(newListItem, updater);
+            }
         }
 
     </script>
