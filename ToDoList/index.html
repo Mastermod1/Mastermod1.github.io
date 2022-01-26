@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <style>
+        body{
+            background-color: cadetblue;
+        }
+        #listDiv{
+            width: 400px;
+            min-height: 400px;
+            background-color: goldenrod;
+            margin: 0 auto;
+            padding-bottom: 20px;
+            box-shadow: black 3px 3px 5px;
+        }
+        #list{
+            position: relative;
+        }
+        li{
+            font-size: 24px;
+            border-bottom: 2px solid black;
+            border-radius: 10%;
+            padding: 2px 5px;
+            width: 88%;
+        }
+        #list span{
+            position: absolute;
+            bottom: 0;
+            right: 5px;
+            background-image: url(pencil.png);
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            font-weight: bold;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="listDiv">
+        <h1>ToDo List</h1>
+        <ul id="list">
+            <li id="updater" contenteditable></li>
+            <span onClick="addListItem()"></span>
+        </ul>
+        
+    </div>
+    <script>
+        let list = document.getElementById("list");
+        let listItems = document.getElementsByTagName("li");
+        let updater = document.getElementById("updater");
+        let listItemsLength = listItems.length;
+        function addListItem(){
+            let newListItem = document.createElement("li");
+            newListItem.innerHTML = updater.innerHTML;
+            updater.innerHTML = "";
+            list.insertBefore(newListItem, updater);
+        }
+
+    </script>
+</body>
+</html>
