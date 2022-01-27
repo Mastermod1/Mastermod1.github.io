@@ -64,13 +64,17 @@
         let listItems = document.getElementsByTagName("li");
         let updater = document.getElementById("updater");
         let listItemsLength = listItems.length;
-        const changeColor = function(){
-            this.style.textDecoration = "line-through";
+        const crossItem = function(){
+            if(this.style.textDecoration != "line-through"){
+               this.style.textDecoration = "line-through"; 
+            } else {
+                this.style.textDecoration = "none"; 
+            }  
         }
         function addListItem(){
             if(updater.innerHTML !== ""){
                 let newListItem = document.createElement("li");
-                newListItem.addEventListener("click",changeColor)
+                newListItem.addEventListener("click",crossItem)
                 newListItem.innerHTML = updater.innerHTML;
                 updater.innerHTML = "";
                 list.insertBefore(newListItem, updater);
