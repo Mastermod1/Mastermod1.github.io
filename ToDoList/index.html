@@ -71,10 +71,20 @@
                 this.style.textDecoration = "none"; 
             }  
         }
+        const funkcja = function(e){
+            if(e.keyCode == 13 && !e.shiftKey){
+                e.preventDefault();
+                addListItem();
+            }
+        }
+        updater.addEventListener("keydown",funkcja);
         function addListItem(){
             if(updater.innerHTML !== ""){
                 let newListItem = document.createElement("li");
+                // Cross Item on click
                 newListItem.addEventListener("click",crossItem)
+                // Disable doubleClick selection
+                newListItem.addEventListener('mousedown', function(e){ e.preventDefault(); }, false);
                 newListItem.innerHTML = updater.innerHTML;
                 updater.innerHTML = "";
                 list.insertBefore(newListItem, updater);
