@@ -8,16 +8,18 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
         body{
-            background-color: cadetblue;
+            background-color: rgb(202,164,120);
             font-family: 'Architects Daughter', cursive;
         }
         #listDiv{
             width: 400px;
             min-height: 400px;
-            background-color: goldenrod;
+            background-image: linear-gradient(to bottom, #f5ee74, #f5ec78, #f5eb7d, #f5e981, #f5e885);
             margin: 0 auto;
             padding-bottom: 20px;
-            box-shadow: black 3px 3px 5px;
+            -webkit-box-shadow: 11px 10px 24px 0px rgba(177, 177, 177, 1);
+            -moz-box-shadow: 11px 10px 24px 0px rgba(177, 177, 177, 1);
+            box-shadow: 11px 10px 24px -5px rgba(45, 45, 45, 0.25);
         }
         #list{
             position: relative;
@@ -71,13 +73,16 @@
                 this.style.textDecoration = "none"; 
             }  
         }
-        const funkcja = function(e){
+        const disableNewLineEnter = function(e){
             if(e.keyCode == 13 && !e.shiftKey){
                 e.preventDefault();
                 addListItem();
             }
         }
-        updater.addEventListener("keydown",funkcja);
+        updater.addEventListener("keydown",disableNewLineEnter);
+        const editAfterDblClk = function(){
+            this.contenteditable = "true";
+        }
         function addListItem(){
             if(updater.innerHTML !== ""){
                 let newListItem = document.createElement("li");
@@ -85,6 +90,8 @@
                 newListItem.addEventListener("click",crossItem)
                 // Disable doubleClick selection
                 newListItem.addEventListener('mousedown', function(e){ e.preventDefault(); }, false);
+                // Edit on dblClick
+                newListItem.addEventListener("dblclick",editAfterDblClk)
                 newListItem.innerHTML = updater.innerHTML;
                 updater.innerHTML = "";
                 list.insertBefore(newListItem, updater);
