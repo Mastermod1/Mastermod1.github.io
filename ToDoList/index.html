@@ -7,14 +7,41 @@
     <title>ToDoList</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+        :root{
+            --backgroundColor: rgb(202,164,120);
+            --cardColor: linear-gradient(to bottom, #f5ee74, #f5ec78, #f5eb7d, #f5e981, #f5e885);
+            --frameWidth: 40px;
+            --frameColor: rgb(118,74,52);
+        }
         body{
             background-color: rgb(202,164,120);
             font-family: 'Architects Daughter', cursive;
+            min-height: calc(100vh - 2 * var(--frameWidth));
+            padding: 0;
+            margin: 0;
+            border: var(--frameColor) var(--frameWidth) solid;
+            border-top: none;
+            margin-top: var(--frameWidth);
+        }
+        #menu{
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 var(--frameWidth);
+            height: var(--frameWidth);
+            background-color: var(--frameColor);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 24px;
+            column-gap: 10px;
         }
         #listDiv{
             width: 400px;
             min-height: 400px;
-            background-image: linear-gradient(to bottom, #f5ee74, #f5ec78, #f5eb7d, #f5e981, #f5e885);
+            background-image: var(--cardColor);
             margin: 0 auto;
             padding-bottom: 20px;
             -webkit-box-shadow: 11px 10px 24px 0px rgba(177, 177, 177, 1);
@@ -50,9 +77,15 @@
         [contenteditable] {
             outline: none;
         }
+        
     </style>
 </head>
 <body>
+    <div id="menu">
+        <span>Add</span>
+        <span>Dad</span>
+        <span>dda</span>
+    </div>
     <div id="listDiv">
         <h1>To Do List</h1>
         <ul id="list">
