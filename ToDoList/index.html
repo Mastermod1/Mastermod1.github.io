@@ -39,10 +39,12 @@
             column-gap: 10px;
         }
         #listDiv{
+            position: absolute;
             width: 400px;
             min-height: 400px;
             background-image: var(--cardColor);
             margin: 0 auto;
+            padding-top: 20px;
             padding-bottom: 20px;
             -webkit-box-shadow: 11px 10px 24px 0px rgba(177, 177, 177, 1);
             -moz-box-shadow: 11px 10px 24px 0px rgba(177, 177, 177, 1);
@@ -73,11 +75,23 @@
         h1{
             text-align: center;
             font-size: 40px;
+            margin: 0;
         }
         [contenteditable] {
             outline: none;
         }
-        
+        #listDivPin{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            left: 50%;
+            top: -8px;
+            border-radius: 50%;
+            outline: black 2px solid;
+            transform: translate(-50% 0);
+            cursor:grab
+        }
     </style>
 </head>
 <body>
@@ -87,6 +101,7 @@
         <span>dda</span>
     </div>
     <div id="listDiv">
+        <div id="listDivPin" onmousedown="dragMouseDown()"></div>
         <h1>To Do List</h1>
         <ul id="list">
             <li id="updater" contenteditable></li>
@@ -114,7 +129,7 @@
         }
         updater.addEventListener("keydown",disableNewLineEnter);
         const editAfterDblClk = function(){
-            this.contenteditable = "true";
+            
         }
         function addListItem(){
             if(updater.innerHTML !== ""){
@@ -130,7 +145,47 @@
                 list.insertBefore(newListItem, updater);
             }
         }
+        dragElement(document.getElementById("listDiv"));
+        function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementById(elmnt.id + "Pin")) {
+            // if present, the header is where you move the DIV from:
+            document.getElementById(elmnt.id + "Pin").onmousedown = dragMouseDown;
+        } else {
+            // otherwise, move the DIV from anywhere inside the DIV:
+            elmnt.onmousedown = dragMouseDown;
+        }
 
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            // stop moving when mouse button is released:
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+        }
     </script>
 </body>
 </html>
