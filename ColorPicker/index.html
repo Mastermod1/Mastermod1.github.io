@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColorPicker</title>
+    <style>
+        body{
+            background-color: seagreen;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        #container{
+            display: flex;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        img{
+            min-width: 600px;
+            min-height: 600px;
+            background-color: sandybrown;
+        }
+        #values{
+            min-width: 200px;
+            min-height: 600px;
+            background-color: salmon;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="image" src="" alt="YOUR IMAGE">
+        <div id="values">
+            <p>Press CTRL + V or upload file here:</p>
+            <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)">
+            <p>RGB</p>
+            <p>RGB(0,0,0)</p>
+            <p>HEX</p>
+            <p>#FFFFFF</p>
+        </div>
+    </div>
+    <script>
+        let imageElement = document.getElementById('image');
+        document.addEventListener("paste",pastFile);
+        //Upload function
+        function loadFile(event) {
+            imageElement.src = URL.createObjectURL(event.target.files[0]);
+        };
+        //Paste function
+        function pastFile(){
+            navigator.clipboard.read().then((data) => {
+                if(data[0].types.includes("image/png")){
+                    data[0].getType("image/png").then((img)=>{
+                        imageElement.src = URL.createObjectURL(img);
+                    }); 
+                } else {
+                    alert("There is no image in clipboard!");
+                }
+            });
+        };
+    </script>
+</body>
+</html>
