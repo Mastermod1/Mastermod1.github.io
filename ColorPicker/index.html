@@ -21,9 +21,7 @@
             left: 50%;
             transform: translate(-50%,-50%);
         }
-        img{
-            min-width: 600px;
-            min-height: 600px;
+        canvas{
             background-color: sandybrown;
         }
         #values{
@@ -35,35 +33,49 @@
 </head>
 <body>
     <div id="container">
-        <img id="image" src="" alt="YOUR IMAGE">
+        <canvas width="800" height="400" id="image"></canvas>
         <div id="values">
             <p>Press CTRL + V or upload file here:</p>
-            <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)">
+            <input type="file"  accept="image/*" onchange="loadFile(event)">
+            <br>
+            <button >Eyedrop</button>
             <p>RGB</p>
             <p>RGB(0,0,0)</p>
             <p>HEX</p>
             <p>#FFFFFF</p>
+            <div id="test">
+
+            </div>
         </div>
     </div>
     <script>
-        let imageElement = document.getElementById('image');
+        let imageCanvas = document.getElementById('image');
+        let ctx = imageCanvas.getContext("2d");
         document.addEventListener("paste",pastFile);
-        //Upload function
+        // Upload function
         function loadFile(event) {
-            imageElement.src = URL.createObjectURL(event.target.files[0]);
+            drawBitMap(event.target.files[0]);        
         };
-        //Paste function
+        // Paste function
         function pastFile(){
             navigator.clipboard.read().then((data) => {
                 if(data[0].types.includes("image/png")){
-                    data[0].getType("image/png").then((img)=>{
-                        imageElement.src = URL.createObjectURL(img);
+                    data[0].getType("image/png").then((img)=>{     
+                        drawBitMap(img);
                     }); 
                 } else {
                     alert("There is no image in clipboard!");
                 }
             });
         };
+        // Function to change blob to bitmap and then to draw it on Canvas
+        function drawBitMap(blob){
+            createImageBitmap(blob).then((img) => {
+                ctx.clearRect(0, 0, imageCanvas.width, imageCanvas.height);
+                ctx.drawImage(img,0,0,800,400);
+            });
+        }
+        // Color picker function
     </script>
 </body>
 </html>
