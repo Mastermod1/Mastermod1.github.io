@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ColorPicker</title>
     <style>
+        :root{
+            --white: rgb(245, 242, 231);
+            --blue: rgb(38, 102, 207);
+            --green: rgb(57, 91, 100);
+            --black: rgb(44, 51, 51);
+        }
         body{
-            background-color: seagreen;
+            background: url(blurry-gradient.svg);
+            background-size: cover;
             margin: 0;
             width: 100vw;
             height: 100vh;
             position: relative;
             user-select: none;
+            color: var(--white);
+            font-size: 24px;
+            font-family: Arial, Helvetica, sans-serif;
         }
         #container{
             display: flex;
@@ -21,30 +31,52 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
+            border-radius: 10px;
+            box-shadow: 19px 15px 22px -5px rgba(0,0,0,0.19);
+            -webkit-box-shadow: 19px 15px 22px -5px rgba(0,0,0,0.19);
+            -moz-box-shadow: 19px 15px 22px -5px rgba(0,0,0,0.19);
         }
         canvas{
-            background-color: sandybrown;
-            cursor:crosshair;
+            background-color: var(--white);
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            cursor: crosshair;
         }
         #values{
-            min-width: 200px;
+            min-width: 300px;
             min-height: 600px;
-            background-color: salmon;
+            padding: 10px;
+            background-color: var(--green);
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
         #rgb{
             position: relative;
         }
-        #rgb span{
-            display: inline-block;
-            position: absolute;
-            bottom: -50%;
-            left: 130px;
-            width: 40px;
-            height: 40px;
-            background-color: blue;
-        }
         #rgb, #hex{
             user-select: all;
+        }
+        .crosshair{
+            cursor: crosshair;
+        }
+        button{
+            background-color: var(--blue);
+            color: var(--white);
+            outline: none;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 14px;
+            font-size: 16px;
+        }
+        p{
+            margin: 2px;
+        }
+        .colorDiv{
+            border-radius: 5px;
+            border: solid 5px;
+            padding: 5px;
+            margin: 3px;
+            overflow-y: visible;
         }
     </style>
 </head>
@@ -52,25 +84,41 @@
     <div id="container">
         <canvas width="800" height="800" id="image"></canvas>
         <div id="values">
-            <p>Press CTRL + V or upload file here:</p>
-            <input type="file"  accept="image/*" onchange="loadFile(event)">
-            <br>
-            <button onclick="document.querySelector('canvas').addEventListener('click', colorPicker)">Eyedrop</button>
-            <p>RGB</p>
-            <p id = "rgb">RGB(255,255,255)<span></span></p>
-            <p>HEX</p>
-            <p id = "hex">#FFFFFF</p>
+            <div>
+                <p>Press CTRL + V or upload file here:</p>
+                <input type="file"  accept="image/*" onchange="loadFile(event)">
+                <br>
+            </div>
+            <div id="valuesScroll"></div>
         </div>
     </div>
     <script>
         let imageCanvas = document.getElementById('image');
         let ctx = imageCanvas.getContext("2d");
-        let rgbPara = document.getElementById("rgb");
-        let hexPara = document.getElementById("hex");
+        let eyeDropBool = false;
+        let values = document.getElementById("valuesScroll")
+        let rgbColorList = new Array();
+        let hexColorList = new Array();
+        let colorsVisable = 0;
         document.addEventListener("paste",pastFile);
+        imageCanvas.addEventListener('click', colorPicker);
+        // Toggle eyedropper
+        // function toggleEyeDropper(){
+        //     if(!eyeDropBool){
+        //         imageCanvas.addEventListener('click', colorPicker);
+        //         eyeDropBool = true;
+        //     } else {
+        //         imageCanvas.removeEventListener('click',colorPicker);
+        //          eyeDropBool = false;
+        //     }
+        //     imageCanvas.classList.toggle("crosshair");
+        // }
         // Upload function
         function loadFile(event) {
-            drawBitMap(event.target.files[0]);        
+            drawBitMap(event.target.files[0]);
+            values.innerHTML = ""; // Reset before added colors
+            colorsVisable = 0
+            values.style.overflowY = "hidden";          
         };
         // Paste function
         function pastFile(){
@@ -78,6 +126,9 @@
                 if(data[0].types.includes("image/png")){
                     data[0].getType("image/png").then((img)=>{     
                         drawBitMap(img);
+                        values.innerHTML = ""; // Reset before added colors
+                        colorsVisable = 0
+                        values.style.overflowY = "hidden"; 
                     }); 
                 } else {
                     alert("There is no image in clipboard!");
@@ -95,11 +146,31 @@
         function colorPicker(e){
             let mousePos = getCanvasMousePos(e);
             let imgData = ctx.getImageData(Math.trunc(mousePos.x),Math.trunc(mousePos.y),1,1);
-            //console.log("Red: " + imgData.data[0] + " Green: " + imgData.data[1] + " Blue: " + imgData.data[2] + " Alpha: " + imgData.data[3]);
-            rgbPara.innerText = "rgb(" + imgData.data[0] + "," + imgData.data[1] + "," + imgData.data[2] + ")";
-            hexPara.innerText = "#" +(imgData.data[0].toString(16) + "" + imgData.data[1].toString(16) + "" + imgData.data[2].toString(16)).toUpperCase();
-            rgbPara.appendChild(document.createElement("span"));
-            rgbPara.querySelector("span").style.backgroundColor = "rgb(" + imgData.data[0] + "," + imgData.data[1] + "," + imgData.data[2] + ")";
+            let rgbColor = "rgb(" + imgData.data[0] + "," + imgData.data[1] + "," + imgData.data[2] + ")";
+            let hexColor = "#" + (imgData.data[0].toString(16) + "" + imgData.data[1].toString(16) + "" + imgData.data[2].toString(16)).toUpperCase()
+            
+            //Check if color is already on list            
+            if(!rgbColorList.includes(rgbColor) && !hexColorList.includes(hexColor)){
+                colorsVisable++;
+                let div = document.createElement("div");
+                let rgb = document.createElement("p");
+                let hex = document.createElement("p");
+                rgb.innerText = "RGB: " + rgbColor;
+                hex.innerText = "HEX: #" + hexColor;
+                div.appendChild(rgb);
+                div.appendChild(hex);
+                div.classList.toggle("colorDiv")
+                div.style.borderColor = rgbColor;
+                values.appendChild(div);
+                rgbColorList.push(rgbColor);
+                hexColorList.push(hexColor);
+            } else {
+                alert("This color is already on the list!");
+            }
+            if(colorsVisable * 81 + 160 > 800){
+                values.style.overflowY = "scroll";
+                values.style.height = "650px";
+            }
         }
         function getCanvasMousePos(e){
             let rect = imageCanvas.getBoundingClientRect();
