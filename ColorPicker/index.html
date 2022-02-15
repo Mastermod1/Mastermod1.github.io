@@ -20,7 +20,8 @@
             height: 100vh;
             position: relative;
             user-select: none;
-            color: var(--white);
+            color: var(--black);
+            font-weight: bold;
             font-size: 24px;
             font-family: Arial, Helvetica, sans-serif;
         }
@@ -37,7 +38,7 @@
             -moz-box-shadow: 19px 15px 22px -5px rgba(0,0,0,0.19);
         }
         canvas{
-            background-color: var(--white);
+            background-color: var(--green);
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
             cursor: crosshair;
@@ -46,7 +47,7 @@
             min-width: 300px;
             min-height: 600px;
             padding: 10px;
-            background-color: var(--green);
+            background-color: var(--white);
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
         }
@@ -75,8 +76,9 @@
             border-radius: 5px;
             border: solid 5px;
             padding: 5px;
-            margin: 3px;
+            margin: 10px 5px;
             overflow-y: visible;
+            box-shadow: 5px 4px 5px rgba(0,0,0,0.19);
         }
     </style>
 </head>
@@ -86,8 +88,9 @@
         <div id="values">
             <div>
                 <p>Press CTRL + V or upload file here:</p>
+                <label for="format">HTML format?</label>
+                <input id="format" name="format" type="checkbox">
                 <input type="file"  accept="image/*" onchange="loadFile(event)">
-                <br>
             </div>
             <div id="valuesScroll"></div>
         </div>
@@ -96,7 +99,8 @@
         let imageCanvas = document.getElementById('image');
         let ctx = imageCanvas.getContext("2d");
         let eyeDropBool = false;
-        let values = document.getElementById("valuesScroll")
+        let values = document.getElementById("valuesScroll");
+        let formatHTML = document.getElementById("format");
         let rgbColorList = new Array();
         let hexColorList = new Array();
         let colorsVisable = 0;
@@ -146,7 +150,8 @@
         function colorPicker(e){
             let mousePos = getCanvasMousePos(e);
             let imgData = ctx.getImageData(Math.trunc(mousePos.x),Math.trunc(mousePos.y),1,1);
-            let rgbColor = "rgb(" + imgData.data[0] + "," + imgData.data[1] + "," + imgData.data[2] + ")";
+            let rgbColor = "" + imgData.data[0] + "," + imgData.data[1] + "," + imgData.data[2];
+            let rgbColorHTML = "rgb(" + rgbColor + ")";
             let hexColor = "#" + (imgData.data[0].toString(16) + "" + imgData.data[1].toString(16) + "" + imgData.data[2].toString(16)).toUpperCase()
             
             //Check if color is already on list            
@@ -155,12 +160,18 @@
                 let div = document.createElement("div");
                 let rgb = document.createElement("p");
                 let hex = document.createElement("p");
-                rgb.innerText = "RGB: " + rgbColor;
+                rgb.addEventListener("click",coppyClick);
+                hex.addEventListener("click",coppyClick);
+                rgb.innerText = "RGB: " + rgbColorHTML;
                 hex.innerText = "HEX: " + hexColor;
+                rgb.setAttribute("value",rgbColor);
+                rgb.setAttribute("dataType","rgb");
+                hex.setAttribute("value",hexColor);
                 div.appendChild(rgb);
                 div.appendChild(hex);
-                div.classList.toggle("colorDiv")
-                div.style.borderColor = rgbColor;
+                div.classList.toggle("colorDiv");
+                div.style.borderColor = rgbColorHTML;
+                div.style.outline = "1px solid black";
                 values.appendChild(div);
                 rgbColorList.push(rgbColor);
                 hexColorList.push(hexColor);
@@ -170,6 +181,16 @@
             if(colorsVisable * 81 + 160 > 800){
                 values.style.overflowY = "scroll";
                 values.style.height = "650px";
+            }
+        }
+        function coppyClick(){
+            let color = this.getAttribute("value");
+            let type = this.getAttribute("dataType");
+            if(formatHTML.checked && type == "rgb"){
+                color = "rgb(" + color + ")";
+                navigator.clipboard.writeText(color);
+            } else {
+                navigator.clipboard.writeText(color);
             }
         }
         function getCanvasMousePos(e){
