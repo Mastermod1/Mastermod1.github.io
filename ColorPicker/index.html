@@ -83,11 +83,10 @@
         .colorDiv span{
             position: absolute;
             font-weight: normal;
-            transition: all .5s;
+            transition-duration: .8s;
             color: #008F7A;
             top: 0;
             right: 0px;
-            transform: translateX(0);
         }
         .colorDiv span::before{
             content: "";
@@ -110,6 +109,14 @@
             bottom: 2px;
             right: 105px;
             transform: rotateZ(-45deg);
+        }
+        .copyAnim{
+            animation: copyAnim .5s;
+        }
+        @keyframes copyAnim {
+            0% { transform: translateX(0px);}
+            50% {transform: translateX(-32px)}
+            100% {transform: translateX(0px)}
         }
     </style>
 </head>
@@ -193,8 +200,8 @@
                 let hex = document.createElement("p");
                 let span1 = document.createElement("span");
                 let span2 = document.createElement("span");
-                rgb.addEventListener("click",coppyClick);
-                hex.addEventListener("click",coppyClick);
+                rgb.addEventListener("click",copyClick);
+                hex.addEventListener("click",copyClick);
                 rgb.innerText = "RGB: " + rgbColorHTML;
                 rgb.style.position = "relative";
                 hex.style.position = "relative";
@@ -224,7 +231,7 @@
                 values.style.height = "650px";
             }
         }
-        function coppyClick(){
+        function copyClick(){
             let color = this.getAttribute("value");
             let type = this.getAttribute("dataType");
             if(formatHTML.checked && type == "rgb"){
@@ -235,7 +242,8 @@
             }
             let span = this.querySelector("span");
             span.style.opacity = "100%";
-            setTimeout(function(){span.style.opacity="0"},500);
+            setTimeout(function(){span.classList.toggle("copyAnim"); span.style.opacity="0"},500);
+            span.classList.toggle("copyAnim");
         }
         function getCanvasMousePos(e){
             let rect = imageCanvas.getBoundingClientRect();
