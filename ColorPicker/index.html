@@ -44,7 +44,7 @@
             cursor: crosshair;
         }
         #values{
-            min-width: 300px;
+            min-width: 400px;
             min-height: 600px;
             padding: 10px;
             background-color: var(--white);
@@ -79,6 +79,37 @@
             margin: 10px 5px;
             overflow-y: visible;
             box-shadow: 5px 4px 5px rgba(0,0,0,0.19);
+        }
+        .colorDiv span{
+            position: absolute;
+            font-weight: normal;
+            transition: all .5s;
+            color: #008F7A;
+            top: 0;
+            right: 0px;
+            transform: translateX(0);
+        }
+        .colorDiv span::before{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            background-color: black;
+            top: 2px;
+            right: 105px;
+            transform: rotateZ(45deg);
+        }
+        .colorDiv span::after{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            background-color: black;
+            bottom: 2px;
+            right: 105px;
+            transform: rotateZ(-45deg);
         }
     </style>
 </head>
@@ -160,13 +191,23 @@
                 let div = document.createElement("div");
                 let rgb = document.createElement("p");
                 let hex = document.createElement("p");
+                let span1 = document.createElement("span");
+                let span2 = document.createElement("span");
                 rgb.addEventListener("click",coppyClick);
                 hex.addEventListener("click",coppyClick);
                 rgb.innerText = "RGB: " + rgbColorHTML;
+                rgb.style.position = "relative";
+                hex.style.position = "relative";
                 hex.innerText = "HEX: " + hexColor;
+                span1.innerText = "Coppied!";
+                span1.style.opacity="0"
+                span2.innerText = "Coppied!";
+                span2.style.opacity="0"
                 rgb.setAttribute("value",rgbColor);
                 rgb.setAttribute("dataType","rgb");
                 hex.setAttribute("value",hexColor);
+                rgb.appendChild(span1);
+                hex.appendChild(span2);
                 div.appendChild(rgb);
                 div.appendChild(hex);
                 div.classList.toggle("colorDiv");
@@ -192,6 +233,9 @@
             } else {
                 navigator.clipboard.writeText(color);
             }
+            let span = this.querySelector("span");
+            span.style.opacity = "100%";
+            setTimeout(function(){span.style.opacity="0"},500);
         }
         function getCanvasMousePos(e){
             let rect = imageCanvas.getBoundingClientRect();
