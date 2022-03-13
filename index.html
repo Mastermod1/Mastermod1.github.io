@@ -15,6 +15,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
+        user-select: none;
     }
     h1{
         letter-spacing: 5px;
@@ -22,7 +23,6 @@
     .infoBox{
         width: 95%;
         max-height: 90vh;
-        z-index: 2;
         overflow: hidden;
     }
     .blur{
@@ -44,14 +44,12 @@
         width: 45%;
     }
     .main{
-        animation: 5s hello;
+        animation: 2s ease-out hello;
     }
     @keyframes hello{
-        0% {opacity: 0; transform: translateY(0); }
-        50% {transform: translateY(10px);}
-        75% {transform: translateY(-5px);} 
-        100% {transform: translateY(0); opacity: 100%;} 
-    }
+        0% {opacity: 0; transform: translateY(50%); } 
+        100% {opacity: 100%; transform: translateY(0);} 
+    }   
 </style>
 <body>
     <div id="blurBlock" class="beforeBlur"></div>
@@ -60,79 +58,94 @@
             <div class="row">
                 <div class="col text-center">
                     <hr>
-                    <h1 class="text-uppercase">Hi there!</h1>
+                    <h1 class="text-uppercase">Salute my friend!</h1>
                     <p>There are my projects and I'm not afraid to do next!</p>
                     <hr>
                 </div>
             </div>
             <div class="row justify-content-center text-center">
-                <span class="col-12 col-sm" onclick="openUp(this)"><span class="navEle">Intro</span>
-                    <div class="infoBox d-none bg-dark rounded position-absolute top-50 start-50 translate-middle">
-                        <div class="text-light p-4">
-                            <h2>Intro</h2>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum euismod iaculis. Suspendisse imperdiet vehicula est, id semper purus ultricies quis. Nullam sit amet enim a diam sagittis convallis eget ac neque. Donec volutpat lectus at nulla vehicula volutpat. Aenean erat leo, blandit eu neque non, imperdiet ultricies nisl. Maecenas pellentesque commodo scelerisque. Sed dolor quam, malesuada eget aliquet eu, placerat sagittis lacus. Fusce eget fringilla ipsum. Aenean porta leo a nibh imperdiet fermentum. Duis eu ante ac mi scelerisque placerat. Vivamus viverra tincidunt purus quis facilisis. Vestibulum ut orci ullamcorper.
-                        </div>
-                    </div>
-                </span>
-                <span class="col-12 col-sm" onclick="openUp(this)"><span class="navEle">Projects</span>
-                    <div class="infoBox d-none bg-dark rounded position-absolute top-50 start-50 translate-middle">
-                        <div class="text-light p-4">
-                            <h2>Projects</h2>
-                            <div class="container proj">
-                                <div class="row">
-                                    <div class="col-12 col-sm-6">1
-                                        <br><img src="account.png">
-                                    </div>
-                                    <div class="col-12 col-sm-6">2
-                                        <br><img src="account.png">
-                                    </div>
-                                    <div class="col-12 col-sm-6">3
-                                        <br><img src="account.png">
-                                    </div>
-                                    <div class="col-12 col-sm-6">4
-                                        <br><img src="account.png">
-                                    </div>
-                                    <div class="col-12 col-sm-6">5
-                                        <br><img src="account.png">
-                                    </div>
-                                    <div class="col-12 col-sm-6">6
-                                        <br><img src="account.png">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </span>
-                <span class="col-12 col-sm" onclick="openUp(this)"><span class="navEle">About</span>
-                    <div class="infoBox d-none bg-dark rounded position-absolute top-50 start-50 translate-middle">
-                        <div class="text-light p-4">
-                            <h2>About</h2>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum euismod iaculis. Suspendisse imperdiet vehicula est, id semper purus ultricies quis. Nullam sit amet enim a diam sagittis convallis eget ac neque. Donec volutpat lectus at nulla vehicula volutpat. Aenean erat leo, blandit eu neque non, imperdiet ultricies nisl. Maecenas pellentesque commodo scelerisque. Sed dolor quam, malesuada eget aliquet eu, placerat sagittis lacus. Fusce eget fringilla ipsum. Aenean porta leo a nibh imperdiet fermentum. Duis eu ante ac mi scelerisque placerat. Vivamus viverra tincidunt purus quis facilisis. Vestibulum ut orci ullamcorper.
-                        </div>
-                    </div>
-                </span>
-                <span class="col-12 col-sm" onclick="openUp(this)"><span class="navEle">Contact</span>
-                    <div class="infoBox d-none bg-dark rounded position-absolute top-50 start-50 translate-middle">
-                        <div class="text-light p-4">
-                            <h2>Contact</h2>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum euismod iaculis. Suspendisse imperdiet vehicula est, id semper purus ultricies quis. Nullam sit amet enim a diam sagittis convallis eget ac neque. Donec volutpat lectus at nulla vehicula volutpat. Aenean erat leo, blandit eu neque non, imperdiet ultricies nisl. Maecenas pellentesque commodo scelerisque. Sed dolor quam, malesuada eget aliquet eu, placerat sagittis lacus. Fusce eget fringilla ipsum. Aenean porta leo a nibh imperdiet fermentum. Duis eu ante ac mi scelerisque placerat. Vivamus viverra tincidunt purus quis facilisis. Vestibulum ut orci ullamcorper.
-                        </div>
-                    </div>
-                </span>
+                <span class="col-12 col-sm" onclick="openUp(this)"><span class="navEle">Intro</span></span>
+                <span class="col-12 col-sm" onclick="openUp(this)"><span class="navEle">Projects</span></span>
+                <span class="col-12 col-sm" onclick="openUp(this)"><span class="navEle">About</span></span>
+                <span class="col-12 col-sm" onclick="openUp(this)"><span class="navEle">Contact</span></span>
             </div>
         </div>
         <div class="position-absolute bottom-0 start-50 translate-middle">
             <small>© Daniel Kałmucki design.</small>
         </div>
     </div>
+    <!-- OverPageHrefs -->
+    <!-- Intro -->
+    <div id="Intro" class="infoBox d-none bg-dark rounded position-absolute top-50 start-50 translate-middle">
+        <div onClick="closeWind('Intro')" class="position-relative text-center text-light p-4">
+            <h2>Intro</h2>
+            <h2 class="position-absolute top-0 end-0 px-2">X</h2>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum euismod iaculis. Suspendisse imperdiet vehicula est, id semper purus ultricies quis. Nullam sit amet enim a diam sagittis convallis eget ac neque. Donec volutpat lectus at nulla vehicula volutpat. Aenean erat leo, blandit eu neque non, imperdiet ultricies nisl. Maecenas pellentesque commodo scelerisque. Sed dolor quam, malesuada eget aliquet eu, placerat sagittis lacus. Fusce eget fringilla ipsum. Aenean porta leo a nibh imperdiet fermentum. Duis eu ante ac mi scelerisque placerat. Vivamus viverra tincidunt purus quis facilisis. Vestibulum ut orci ullamcorper.
+        </div>
+    </div>
+    <!-- Projects -->
+    <div id="Projects" class="infoBox d-none bg-dark rounded position-absolute top-50 start-50 translate-middle">
+        <div class="position-relative text-center text-light p-4">
+            <h2>Projects</h2>
+            <h2 onClick="closeWind('Projects')" class="position-absolute top-0 end-0 px-2">X</h2>
+            <div class="container proj">
+                <div class="row">
+                    <div class="col-12 col-sm-6">AdvertPage
+                        <br><a href="Gory/index.html" target="_blank"><img src="account.png"></a>
+                    </div>
+                    <div class="col-12 col-sm-6">WeatherApp
+                        <br><a href="weatherApp/index.html" target="_blank"><img src="account.png"></a>
+                    </div>
+                    <div class="col-12 col-sm-6">PasswordGenerator
+                        <br><a href="PasswordGenerator/index.html" target="_blank"><img src="account.png"></a>
+                    </div>
+                    <div class="col-12 col-sm-6">ToDoBoard
+                        <br><a href="ToDoList/index.html" target="_blank"><img src="account.png"></a>
+                    </div>
+                    <div class="col-12 col-sm-6">ColorPicker
+                        <br><a href="ColorPicker/index.html" target="_blank"><img src="account.png"></a>
+                    </div>
+                    <div class="col-12 col-sm-6">CardDesign
+                        <br><a href="CardDesign/index.html" target="_blank"><img src="account.png"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About -->
+    <div id="About" class="infoBox d-none bg-dark rounded position-absolute top-50 start-50 translate-middle">
+        <div class="position-relative text-center text-light p-4">
+            <h2>About</h2>
+            <h2 onClick="closeWind('About')" class="position-absolute top-0 end-0 px-2">X</h2>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum euismod iaculis. Suspendisse imperdiet vehicula est, id semper purus ultricies quis. Nullam sit amet enim a diam sagittis convallis eget ac neque. Donec volutpat lectus at nulla vehicula volutpat. Aenean erat leo, blandit eu neque non, imperdiet ultricies nisl. Maecenas pellentesque commodo scelerisque. Sed dolor quam, malesuada eget aliquet eu, placerat sagittis lacus. Fusce eget fringilla ipsum. Aenean porta leo a nibh imperdiet fermentum. Duis eu ante ac mi scelerisque placerat. Vivamus viverra tincidunt purus quis facilisis. Vestibulum ut orci ullamcorper.
+        </div>
+    </div>
+    <!-- Contact -->
+    <div id="Contact" class="infoBox d-none bg-dark rounded position-absolute top-50 start-50 translate-middle">
+        <div  class="position-relative text-center text-light p-4">
+            <h2>Contact</h2>
+            <h2 onClick="closeWind('Contact')" class="position-absolute top-0 end-0 px-2">X</h2>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum euismod iaculis. Suspendisse imperdiet vehicula est, id semper purus ultricies quis. Nullam sit amet enim a diam sagittis convallis eget ac neque. Donec volutpat lectus at nulla vehicula volutpat. Aenean erat leo, blandit eu neque non, imperdiet ultricies nisl. Maecenas pellentesque commodo scelerisque. Sed dolor quam, malesuada eget aliquet eu, placerat sagittis lacus. Fusce eget fringilla ipsum. Aenean porta leo a nibh imperdiet fermentum. Duis eu ante ac mi scelerisque placerat. Vivamus viverra tincidunt purus quis facilisis. Vestibulum ut orci ullamcorper.
+        </div>
+    </div>
     <script>
         let blurBlock = document.querySelector("div");
+        function closeWind(id){
+            let div = document.querySelector("#" + id);
+            div.classList.toggle("d-none");
+            blurBlock.classList.toggle("blur");
+            blurBlock.classList.toggle("beforeBlur");
+            console.log("closed");
+        }
         function openUp(e){
-            let div = e.querySelector("div");
+            console.log("openUp");
+            let id = e.querySelector("span").innerText;
+            let div = document.querySelector("#" + id);
             div.classList.toggle("d-none");
             blurBlock.classList.toggle("blur");
             blurBlock.classList.toggle("beforeBlur");
         }
+        
     </script>
 </body>
 </html>
