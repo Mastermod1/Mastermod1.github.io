@@ -15,21 +15,32 @@
         background-size: cover;
         background-repeat: no-repeat;
     }
+    h1{
+        letter-spacing: 5px;
+    }
 </style>
 <body>
-    <div class="container-fluid container-sm mx-auto vh-100">
+    <div class="container-fluid container-sm mx-auto pt-5 vh-100">
         <div class="position-relative h-25">
-            <img class="h-100 position-absolute top-50 start-50 translate-middle" src="window.png">
+            <img class="h-100 border border-dark rounded-circle position-absolute top-50 start-50 translate-middle" src="window.png">
         </div>
         <div class="row">
-            Heye There I'm Daniel and I enjoy being Daniel!
+            <div class="col text-center">
+                <hr>
+                <h1 class="text-uppercase">Hi there!</h1>
+                <p>Here I am and there are my projects and pst I just want to let you know that I'm fearless.</p>
+                <hr>
+            </div>
         </div>
-        <span class="row justify-content-center">
-            <span class="col-5 col-sm border border-3 rounded border-dark">Menu</span>
-            <span class="col-5 col-sm border border-3 rounded border-dark">About</span>
-            <span class="col-5 col-sm border border-3 rounded border-dark">Projects</span>
-            <span class="col-5 col-sm border border-3 rounded border-dark">Contact</span>
-        </span>
+        <div class="row justify-content-center text-center">
+            <span class="col-12 col-sm">Menu</span>
+            <span class="col-12 col-sm">About</span>
+            <span class="col-12 col-sm">Projects</span>
+            <span class="col-12 col-sm">Contact</span>
+        </div>
+        <div class="position-absolute bottom-0 start-50 translate-middle">
+            © Daniel Kałmucki design.
+        </div>
     </div>
 </body>
 </html>
