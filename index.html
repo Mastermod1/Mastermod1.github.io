@@ -23,7 +23,7 @@
     .infoBox{
         width: 95%;
         max-height: 90vh;
-        overflow: hidden;
+        overflow: auto;
     }
     .blur{
         filter: blur(25px);
@@ -53,10 +53,15 @@
         transition: 2s;
         transform: translateY(101%);
         overflow-wrap: break-word;
+        overflow: auto;
     }
     .pageCard:hover div{
         display: block;
         transform: translateY(0);
+    }
+    a,a:hover,a:visited{
+        color: white;
+        text-decoration: none;
     }
     @keyframes hello{
         0% {opacity: 0; transform: translateY(50%); } 
@@ -102,52 +107,64 @@
                 <div class="container proj">
                     <div class="row">
                         <div class="pageCard col-12 col-sm-6 position-relative">
-                            <h3>AdvertPage</h3>
-                            <a href="Gory/index.html" target="_blank"><img src="account.png"></a>
-                            <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
-                                <h4>Description</h4>
-                                1This project is my first landing type page which is made using just HTML and CSS.
-                            </div>
+                            <a href="Gory/index.html" target="_blank">
+                                <h3>AdvertPage</h3>
+                                <img src="account.png">
+                                <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
+                                    <h4>Description</h4>
+                                    <p>This is my first frontend project using responsive web design with pure HTML, CSS and JavaScript. There are some image sliders and cards. I've also made burger menu with pure CSS which isn't the best but it had great fun dealing with this challange. I also used image api which gets random images to sliders and this is why they load so long after first clicks.</p>
+                                </div>  
+                            </a>
                         </div>
                         <div class="pageCard col-12 col-sm-6 position-relative">
-                            <h3>WeatherApp</h3>
-                            <br><a href="weatherApp/index.html" target="_blank"><img src="account.png"></a>
-                            <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
-                                <h4>Description</h4>
-                                2This project is my first landing type page which is made using just HTML and CSS.
-                            </div>
+                            <a href="weatherApp/index.html" target="_blank">
+                                <h3>WeatherApp</h3>
+                                <img src="account.png">
+                                <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
+                                    <h4>Description</h4>
+                                    2This project is my first landing type page which is made using just HTML and CSS.
+                                </div>
+                            </a>
                         </div>
                         <div class="pageCard col-12 col-sm-6 position-relative">
-                            <h3>PasswordGenerator</h3>
-                            <br><a href="PasswordGenerator/index.html" target="_blank"><img src="account.png"></a>
-                            <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
-                                <h4>Description</h4>
-                                3This project is my first landing type page which is made using just HTML and CSS.
-                            </div>
+                            <a href="PasswordGenerator/index.html" target="_blank">
+                                <h3>PasswordGenerator</h3>
+                                <img src="account.png">
+                                <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
+                                    <h4>Description</h4>
+                                    3This project is my first landing type page which is made using just HTML and CSS.
+                                </div>
+                            </a>
                         </div>
                         <div class="pageCard col-12 col-sm-6 position-relative">
-                            <h3>ToDoBoard</h3>
-                            <br><a href="ToDoList/index.html" target="_blank"><img src="account.png"></a>
-                            <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
-                                <h4>Description</h4>
-                                4This project is my first landing type page which is made using just HTML and CSS.
-                            </div>
+                            <a href="ToDoList/index.html" target="_blank">
+                                <h3>ToDoBoard</h3>
+                                <img src="account.png">
+                                <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
+                                    <h4>Description</h4>
+                                    4This project is my first landing type page which is made using just HTML and CSS.
+                                </div>
+                            </a>
                         </div>
                         <div class="pageCard col-12 col-sm-6 position-relative">
-                            <h3>ColorPicker</h3>
-                            <br><a href="ColorPicker/index.html" target="_blank"><img src="account.png"></a>
-                            <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
-                                <h4>Description</h4>
-                                5This project is my first landing type page which is made using just HTML and CSS.
-                            </div>
+                            <a href="ColorPicker/index.html" target="_blank">
+                                <h3>ColorPicker</h3>
+                                <img src="account.png">
+                                <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
+                                    <h4>Description</h4>
+                                    5This project is my first landing type page which is made using just HTML and CSS.
+                                </div>
+                            </a>
                         </div>
                         <div class="pageCard col-12 col-sm-6 position-relative">
-                            <h3>CardDesign</h3>
-                            <br><a href="CardDesign/index.html" target="_blank"><img src="account.png"></a>
-                            <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
-                                <h4>Description</h4>
-                                6This project is my first landing type page which is made using just HTML and CSS.
-                            </div>
+                            <a href="CardDesign/index.html" target="_blank">
+                                <h3>CardDesign</h3>
+                                <img src="account.png">
+                                <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
+                                    <h4>Description</h4>
+                                    6This project is my first landing type page which is made using just HTML and CSS.
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
