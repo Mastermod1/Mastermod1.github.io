@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const width = canvas.clientWidth;
-const height = canvas.clientHeight;
+const height = canvas.clientHeight - 100;
 const Directons = {
     up: [0,-20],
     down: [0,20],
@@ -35,11 +35,13 @@ class Snake{
     }
     drawSnake(food){
         ctx.clearRect(0,0,width,height);
+        board();
         food.drawFood();
         ctx.fillStyle = "black";
         for(let i = 0; i < this.length; i++){
             ctx.fillRect(this.snakeParts[i].posX, this.snakeParts[i].posY, 20, 20); 
         }
+        border();
     }
     createPart(x,y,dir){
         const part = {
@@ -94,6 +96,21 @@ function inputHandler(e){
         case 100:
             snake.turn(Directons.right);
             break;
+    }
+}
+//Board functions
+function border(){
+    ctx.strokeStyle = "black";
+    ctx.strokeRect(0, 0, width, height);
+}
+function board(){
+    for(let w = 0; w < width/20; w++){
+        for(let h = 0; h < height/20; h++){
+            ctx.fillStyle = "#009200"; 
+            if(h % 2 == 1 && w % 2 == 1 || h % 2 == 0 && w % 2 == 0)
+                ctx.fillStyle = "#006400";
+            ctx.fillRect(w * 20, h * 20, 20, 20);
+        }
     }
 }
 let lost = false;
