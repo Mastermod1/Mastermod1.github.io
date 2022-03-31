@@ -2,6 +2,17 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const width = canvas.clientWidth;
 const height = canvas.clientHeight - 100;
+let snake, food, lost, score;
+let restartButton = document.getElementById("resetButton");
+document.addEventListener("keypress",inputHandler);
+restartButton.addEventListener("click", defaultSetUp); 
+function defaultSetUp(){
+    lost = false;
+    food = new Food();
+    snake = new Snake();
+    score = 0;
+    restartButton.style.display = "none"; 
+}
 const Directons = {
     up: [0,-20],
     down: [0,20],
@@ -27,14 +38,14 @@ class Snake{
         let snakeHead = this.getSnakeHead();
         let newPos = [snakeHead.posX + snakeHead.dir[0],snakeHead.posY + snakeHead.dir[1]];
         if(newPos[0] >= width || newPos[0] < 0 || newPos[1] >= height || newPos[1] < 0){
-            lost = true;
+            this.gameOver();
             return;
         }
         this.snakeParts.pop();
         this.snakeParts.unshift(this.createPart(newPos[0], newPos[1], snakeHead.dir));
     }
     drawSnake(food){
-        ctx.clearRect(0,0,width,height);
+        ctx.clearRect(0,0,width,height + 100);
         board();
         food.drawFood();
         ctx.fillStyle = "black";
@@ -42,6 +53,9 @@ class Snake{
             ctx.fillRect(this.snakeParts[i].posX, this.snakeParts[i].posY, 20, 20); 
         }
         border();
+        if(lost){
+            this.gameOver();
+        }
     }
     createPart(x,y,dir){
         const part = {
@@ -62,7 +76,18 @@ class Snake{
         if(head.posX == food.foodPos[0] && head.posY == food.foodPos[1]){
             this.addPart();
             food.nextFood();
+            score++;
         }
+        
+    }
+    gameOver(){
+        lost = true;
+        ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+        ctx.fillRect(0, 0, width, height);
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText("Game Over!", (width-170)/2, height/2);
+        restartButton.style.display = "block"; 
     }
 }
 class Food{
@@ -80,7 +105,6 @@ class Food{
 function random(min = 0,max){
     return Math.floor(Math.random() * (max - min)) + min;
 }
-document.addEventListener("keypress",inputHandler)
 function inputHandler(e){
     e = e || window.event;
     switch(e.keyCode){
@@ -102,6 +126,8 @@ function inputHandler(e){
 function border(){
     ctx.strokeStyle = "black";
     ctx.strokeRect(0, 0, width, height);
+    ctx.font = "30px Arial";
+    ctx.fillText("Score: " + score, 0, height+30); 
 }
 function board(){
     for(let w = 0; w < width/20; w++){
@@ -113,9 +139,7 @@ function board(){
         }
     }
 }
-let lost = false;
-let food = new Food();
-let snake = new Snake();
+defaultSetUp();
 function gameLoop(){
     if(!lost){
         snake.move();
@@ -123,4 +147,4 @@ function gameLoop(){
         snake.drawSnake(food); 
     }
 }
-setInterval(gameLoop,500);
+setInterval(gameLoop,250);
