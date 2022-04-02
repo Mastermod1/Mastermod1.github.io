@@ -69,6 +69,9 @@
         justify-content: space-evenly;
         row-gap: 50px;
     }
+    .form-group{
+        margin: 15px 0;
+    }
     @keyframes hello{
         0% {opacity: 0; transform: translateY(50%); } 
         100% {opacity: 100%; transform: translateY(0);} 
@@ -117,7 +120,8 @@
                                 <h4>AdvertPage</h4>
                                 <img src="images/goryThumb.jpg">
                                 <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
-                                    <h4>Description</h4>
+                                    <h4>Descrext-center text-light p-4">
+                                        <h2>Projects</h2>iption</h4>
                                     <p>This is my first frontend project using responsive web design with pure HTML, CSS and JavaScript. There are some image sliders and cards. I've also made burger menu with pure CSS which isn't the best but it had great fun dealing with this challange. I also used image api which gets random images to sliders and this is why they load so long after first clicks.</p>
                                 </div>  
                             </a>
@@ -199,7 +203,15 @@
             <div  class="position-relative text-center text-light p-4">
                 <h2>Contact</h2>
                 <h2 onClick="closeWind('Contact')" class="position-absolute top-0 end-0 px-2">X</h2>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum euismod iaculis. Suspendisse imperdiet vehicula est, id semper purus ultricies quis. Nullam sit amet enim a diam sagittis convallis eget ac neque. Donec volutpat lectus at nulla vehicula volutpat. Aenean erat leo, blandit eu neque non, imperdiet ultricies nisl. Maecenas pellentesque commodo scelerisque. Sed dolor quam, malesuada eget aliquet eu, placerat sagittis lacus. Fusce eget fringilla ipsum. Aenean porta leo a nibh imperdiet fermentum. Duis eu ante ac mi scelerisque placerat. Vivamus viverra tincidunt purus quis facilisis. Vestibulum ut orci ullamcorper.
+                <form class="w-75 mx-auto" action="https://formspree.io/f/mwkynalr" method="POST">
+                    <div class="form-grup">
+                        <input type="email" class="form-control" placeholder="Your mail" name="email" id="emailInp" required>
+                    </div>
+                    <div class="form-group">    
+                        <textarea class="form-control" placeholder="Type your message ..." name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
             </div>
         </div>
     </div>
