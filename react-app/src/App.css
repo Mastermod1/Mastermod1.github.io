@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+:root{
+  --pink: #f4d6dd;
+  --green: #adbc90;
+  --blue: #71b1d1;
+  --cream: #ffffd0;
+  --white: #fef;
+}
 body{
   font-family: 'Indie Flower', cursive;
+  background-color: var(--green);
 }
 .daily-block{
   text-align: center;
   width: 700px;
-  min-height: calc(100vh - 50px);
-  background-color: white;
-  margin: 0 auto;
+  min-height: calc(100vh - 70px);
+  background-color: var(--white);
+  margin: 10px auto;
   padding: 0 20px 20px 20px;
   display: grid;
   grid-template-columns: 50% 50%;
@@ -26,7 +34,7 @@ body{
 }
 .check-list h2{
  width: calc(100% - 14px);
- background-color: #F4D6D6;
+ background-color: var(--pink);
  padding: 7px;
  font-size: 24px;
 }
@@ -54,7 +62,6 @@ body{
 input{
   font-family: 'Indie Flower', cursive;
   border: 0;
-  border-bottom: 1px solid black;  
   background: transparent;
   width: 95%;
   margin: 5px 0px;
@@ -66,9 +73,30 @@ input{
 input:focus{ 
   border: none;	
   outline: none;
-  border-bottom: 1px solid black;	
+}
+.btn{
+  position: absolute;
+  top: 10px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .print-btn{
-  position: absolute;
-  top: 0;
+  background-image: url(./printer.png);
+  right: 10px;
+}
+.inp-btn{
+  background-image: url(./private.png);
+  right: 56px;
+}
+.inp-btn-hidden{
+  background-image: url(./show.png);
+}
+.hide{
+  visibility: hidden;
 }

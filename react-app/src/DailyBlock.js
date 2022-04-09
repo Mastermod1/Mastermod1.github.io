@@ -33,7 +33,7 @@ class CheckList extends React.Component{
       <div className={'check-list check-list-' + this.props.title[0]}>
         <h2>{this.props.title}</h2>
         {this.state.itemList.map((task) => <CheckListElement key={task} text={task} />)}
-        <input type='text' onKeyDown={(e) => this.newLine(e, this)}/>
+        <input type='text' placeholder='Write here ...' onKeyDown={(e) => this.newLine(e, this)}/>
       </div>
       
     );
