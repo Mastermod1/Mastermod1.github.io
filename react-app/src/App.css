@@ -1,19 +1,74 @@
-.list-element{
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+body{
+  font-family: 'Indie Flower', cursive;
+}
+.daily-block{
+  text-align: center;
+  width: 700px;
+  min-height: calc(100vh - 50px);
+  background-color: white;
+  margin: 0 auto;
+  padding: 0 20px 20px 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 120px auto auto;
+  border: solid 15px;
+  border-image: url(./Old-style-border.svg);
+  border-image-slice: 30 20;
+}
+.daily-block h1{
+  font-size: 72px;
+  line-height: 120px;
+  grid-column: span 2;
+}
+.daily-block :last-child{
+  grid-column: span 2;
+}
+.check-list h2{
+ width: calc(100% - 14px);
+ background-color: #F4D6D6;
+ padding: 7px;
+ font-size: 24px;
+}
+.check-list-element{
   display: flex;
   align-items: center;
   font-size: 24px;
+  padding: 8px;
+  word-break: break-all;
+  text-align: left;
 }
-.list-element div:nth-of-type(1){
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: black;
+.check-list-element ::first-letter{
+  text-transform: uppercase;
+}
+.check-list-element div:nth-of-type(1){
+  display: none;
+}
+.check-list-T .check-list-element div:nth-of-type(1){
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: solid 1px black;
   margin-right: 10px;
 }
-.list-block{
-  width: 400px;
-  min-height: 600px;
-  background-color: sandybrown;
-  margin: 0 auto;
-  padding: 20px;
+input{
+  font-family: 'Indie Flower', cursive;
+  border: 0;
+  border-bottom: 1px solid black;  
+  background: transparent;
+  width: 95%;
+  margin: 5px 0px;
+  padding: 4px 0 5px 0;
+  font-size: 20px;
+  height: 16px;
+  color: black;
+}
+input:focus{ 
+  border: none;	
+  outline: none;
+  border-bottom: 1px solid black;	
+}
+.print-btn{
+  position: absolute;
+  top: 0;
 }
