@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/react-app/build/static/css/main.21c455e4.css",
+    "main.css": "/react-app/build/static/css/main.0d37cd6a.css",
     "main.js": "/react-app/build/static/js/main.a8c210ce.js",
     "static/media/Old-style-border.svg": "/react-app/build/static/media/Old-style-border.13ed260712db3c11ddd8.svg",
     "index.html": "/react-app/build/index.html",
-    "main.21c455e4.css.map": "/react-app/build/static/css/main.21c455e4.css.map",
+    "main.0d37cd6a.css.map": "/react-app/build/static/css/main.0d37cd6a.css.map",
     "main.a8c210ce.js.map": "/react-app/build/static/js/main.a8c210ce.js.map"
   },
   "entrypoints": [
-    "static/css/main.21c455e4.css",
+    "static/css/main.0d37cd6a.css",
     "static/js/main.a8c210ce.js"
   ]
 }
