@@ -12,7 +12,7 @@
 </head>
 <style>
     body{
-        background: url(images/caleb-white-C4GxpfHVDyc-unsplash.jpg);
+        background: #6C6D86 url(images/caleb-white-C4GxpfHVDyc-unsplash.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
@@ -264,7 +264,9 @@
     </div>
     <script>
         //Loader
-        window.addEventListener("load", () => document.getElementById("loader").style.display = "none");
+        let img = document.createElement("img");
+        img.src = "images/caleb-white-C4GxpfHVDyc-unsplash.jpg";
+        img.addEventListener("load",() => document.getElementById("loader").style.display = "none");
         let blurBlock = document.querySelector("div");
         function closeWind(id){
             let div = document.querySelector("#" + id);
