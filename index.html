@@ -72,50 +72,12 @@
     .form-group{
         margin: 15px 0;
     }
-    #loader{
-        position: absolute;
-        background: rgb(102,114,146);
-        background: linear-gradient(180deg, rgba(102,114,146,1) 0%, rgba(245,231,200,1) 60%, rgba(122,98,97,1) 100%); 
-        width: 100vw;
-        height: 100vh;
-        z-index: 10;
-    }
-    #outsideCircle{
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        border: solid 16px gray;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        box-sizing: border-box;
-        animation: load 2s infinite;
-    }
-    #dot{
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background-color: black;
-        border-radius: 50%;
-        top: -13px;
-        left: calc(50% - 5px);
-    }
-    @keyframes load {
-        0% {transform: rotateZ(0deg);}
-        100% {transform: rotateZ(360deg);}
-    }
     @keyframes hello{
         0% {opacity: 0; transform: translateY(50%); } 
         100% {opacity: 100%; transform: translateY(0);} 
     }   
 </style>
 <body>
-    <div id="loader">
-        <div id="outsideCircle">
-            <div id="dot"></div>
-        </div>
-    </div>
     <div id="blurBlock" class="beforeBlur"></div>
     <div class="main container-sm mx-auto vh-100 w-100 position-relative">
         <div class="container position-absolute top-50 start-50 translate-middle">
@@ -263,8 +225,6 @@
         </div>
     </div>
     <script>
-        //Loader
-        window.addEventListener("load", () => document.getElementById("loader").style.display = "none");
         let blurBlock = document.querySelector("div");
         function closeWind(id){
             let div = document.querySelector("#" + id);
