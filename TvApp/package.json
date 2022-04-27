@@ -1,12 +1,12 @@
 {
   "name": "tvapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple TVMagazine app",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildcss": "sass styles/style.scss styles/style.css"
   },
-  "author": "",
+  "author": "Daniel Kalmucki",
   "license": "ISC"
 }

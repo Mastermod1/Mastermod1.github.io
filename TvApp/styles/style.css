@@ -1,3 +1,11 @@
+#selectSection {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
+.card {
+  width: 24%;
+}
 
 /*# sourceMappingURL=style.css.map */
