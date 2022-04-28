@@ -1,23 +1,61 @@
-import { getData } from "./getApiData.js";
-import { createElement } from "./domFunctions.js";
+import { getShowsListByKey, } from "./getApiData.js";
+import { buildTag, buildVDOM, } from "./domFunctions.js";
 
 class App{
     constructor(){
-        this.elemList = {};
+        this.domElements = {};
         this.key = "Disney";
         this.initialize();
-        this.section = document.getElementById("selectSection");
     }
+    
     initialize(){
+        this.initDOMElements();
+        this.fetchAndDisplay();
+        this.setUpEvents();
+    }
+
+    changeSearchPhrase(obj){
+       event.preventDefault();
+       this.key = obj.domElements.searchBox.value;
+       obj.domElements.searchBox.value = "";
        this.fetchAndDisplay();
     }
-    createCard(showData){
-        let card = createElement("div", "card");
-        let img = createElement("img", "card-img-top", null, showData.image.medium);
-        let cardBody = createElement("div", "card-body");
-        let h5 = createElement("h5", "card-title", showData.name);
-        let p = createElement("p", "card-text", showData.summary);
-        let btn = createElement("btn", "btn btn-primary", "Show details");
+
+    setUpEvents(){
+        this.domElements.searchSubmit.addEventListener("click", () => this.changeSearchPhrase(this));
+    }
+
+    initDOMElements(){
+        let idList = Array.from(document.querySelectorAll("[id]")).map(item => item.id);
+        this.domElements = buildVDOM("id", idList);
+    }
+
+    fetchAndDisplay(){
+        this.domElements.cardsSection.innerHTML = "";
+        getShowsListByKey(this.key).then(shows => this.renderCards(shows));
+    }
+
+    renderCards(shows){
+        for( const { show } of shows  )
+            this.templateCardBuilder(show);
+    }
+
+    templateCardBuilder(show){
+        let card = buildTag("div", "card");
+        let cardBody = buildTag("div", "card-body");
+        let h5 = buildTag("h5", "card-title", show.name);
+        let p = buildTag("p", "card-text", show.summary);
+        let btn = buildTag("button", "btn btn-primary", "Details");
+        let img;
+
+        if(show.image){
+            img = buildTag("img", "card-img-top", null, show.image.medium);
+        } else {
+            img = buildTag("img", "card-img-top", null, "https://via.assets.so/img.jpg?w=210&h=295&tc=black&bg=%23cecece&t=NO IMG");
+        }
+        
+            
+        btn.dataset.showName = show.name;
 
         card.appendChild(img);
         card.appendChild(cardBody);
@@ -25,19 +63,7 @@ class App{
         cardBody.appendChild(p);
         cardBody.appendChild(btn);
 
-        return card;
-    }
-    renderCards(shows){
-        for(const { show } of shows){
-            let card = this.createCard(show);
-            this.section.appendChild(card);
-        }
-    }
-    fetchAndDisplay(){
-        getData(this.key).then(data => {
-            this.renderCards(data);
-        });
+        this.domElements.cardsSection.appendChild(card);
     }
 }
-
-document.addEventListener("load",new App());
+document.addEventListener("DOMContentLoaded",new App());
