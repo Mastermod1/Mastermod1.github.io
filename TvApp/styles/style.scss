@@ -1,7 +1,7 @@
-#selectSection{
+#cardsSection{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 .card{
     width: 24%;
