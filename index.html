@@ -25,10 +25,13 @@
         width: 95%;
         max-height: 90vh;
         overflow: auto;
+        opacity: 0;
+        transition: opacity .5s;
     }
     .blur{
         filter: blur(25px);
         backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
         z-index: 0;
     }
     .beforeBlur{
@@ -75,6 +78,9 @@
     .pageCard a{
         color: blue;
         text-decoration: underline;
+    }
+    .info-box-transition{
+        opacity: 100;
     }
     @keyframes hello{
         0% {opacity: 0; transform: translateY(50%); } 
@@ -227,13 +233,15 @@
         let blurBlock = document.querySelector("div");
         function closeWind(id){
             let div = document.querySelector("#" + id);
-            div.classList.toggle("d-none");
+            div.classList.toggle("info-box-transition"); //Animation fade out
+            setTimeout(() => div.classList.toggle("d-none"), 500); 
             blurBlock.classList.toggle("blur");
             blurBlock.classList.toggle("beforeBlur");
         }
         function openUp(e){
             let id = e.querySelector("span").innerText;
             let div = document.querySelector("#" + id);
+            setTimeout(() => div.classList.toggle("info-box-transition"), 100);  //Animation fade in
             div.classList.toggle("d-none");
             blurBlock.classList.toggle("blur");
             blurBlock.classList.toggle("beforeBlur");
