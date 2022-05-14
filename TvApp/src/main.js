@@ -16,9 +16,11 @@ class App{
 
     changeSearchPhrase(obj){
        event.preventDefault();
-       this.key = obj.domElements.searchBox.value;
-       obj.domElements.searchBox.value = "";
-       this.fetchAndDisplay();
+       if(obj.domElements.searchBox.value){
+            this.key = obj.domElements.searchBox.value;
+            obj.domElements.searchBox.value = "";
+            this.fetchAndDisplay();
+       }
     }
 
     setUpEvents(){

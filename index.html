@@ -28,22 +28,6 @@
         opacity: 0;
         transition: opacity .5s;
     }
-    .blur{
-        filter: blur(25px);
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        z-index: 0;
-    }
-    .beforeBlur{
-        z-index: -1;
-    }
-    #blurBlock{
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        left: 0;
-    }
     .proj img{
         width: 65%;
     }
@@ -59,10 +43,13 @@
         overflow-wrap: break-word;
         overflow: auto;
     }
-    .pageCard:hover div{
+    .pageCard:hover  div{
         display: block;
         transform: translateY(0);
         border-radius:  5px 5px 0 0;
+    }
+    .pageCard a{
+        margin: 2px 25px;
     }
     a,a:hover,a:visited{
         color: white;
@@ -88,7 +75,6 @@
     }  
 </style>
 <body>
-    <div id="blurBlock" class="beforeBlur"></div>
     <div class="main container-sm mx-auto vh-100 w-100 position-relative">
         <div class="container position-absolute top-50 start-50 translate-middle">
             <div class="row">
@@ -194,7 +180,8 @@
                             <div class="position-absolute start-0 bottom-0 w-100 h-100  bg-light text-dark py-2 px-2">
                                 <h4>Description</h4>
                                 <p>This was my design trening with wavy shapes so I decided do make simple cards ans using only HTML and CSS create some wavy background for it.</p>
-                                <a href="CardDesign/index.html">-> Preview</a><a href="https://github.com/Mastermod1/Mastermod1.github.io/tree/main/CardDesign">-> Source code</a>
+                                <a href="CardDesign/index.html">-> Preview</a>
+                                <a href="https://github.com/Mastermod1/Mastermod1.github.io/tree/main/CardDesign">-> Source code</a>
                             </div>
                         </div>
                     </div>
@@ -206,10 +193,7 @@
             <div class="position-relative text-center text-light p-4">
                 <h2>About</h2>
                 <h2 onClick="closeWind('About')" class="position-absolute top-0 end-0 px-2">X</h2>
-                <div style="clear: both;" class="">
-                    <img style="max-width:40%" class="my-2" src="./images/photo.jpg">
-                    <p  class="">Since primiary school I've been admiring IT specialists. I started learning basics of C++ with youtube tutorials and I made a lot of projects like calculator, ATM or simple games. Then I got familiar with primitive frontend development during school project. I had a lot of fun doing this projects so I decided to go to technical high school where I could learn things that passionated me. I graduated from technical high school and obtained information technology diploma.</p>
-                </div>
+                <p>Since primiary school I've been admiring IT specialists. I started learning basics of C++ with youtube tutorials and I made a lot of projects like calculator, ATM or simple games. Then I got familiar with primitive frontend development during school project. I had a lot of fun doing this projects so I decided to go to technical high school where I could learn things that passionated me. I graduated from technical high school and obtained information technology diploma.</p>
             </div>
         </div>
         <!-- Contact -->
@@ -230,21 +214,16 @@
         </div>
     </div>
     <script>
-        let blurBlock = document.querySelector("div");
         function closeWind(id){
             let div = document.querySelector("#" + id);
             div.classList.toggle("info-box-transition"); //Animation fade out
             setTimeout(() => div.classList.toggle("d-none"), 500); 
-            blurBlock.classList.toggle("blur");
-            blurBlock.classList.toggle("beforeBlur");
         }
         function openUp(e){
             let id = e.querySelector("span").innerText;
             let div = document.querySelector("#" + id);
             setTimeout(() => div.classList.toggle("info-box-transition"), 100);  //Animation fade in
             div.classList.toggle("d-none");
-            blurBlock.classList.toggle("blur");
-            blurBlock.classList.toggle("beforeBlur");
         }
     </script>
 </body>
