@@ -3,6 +3,19 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.card{
+.card-small{
     width: 24%;
+}
+#details{
+    height: 100vh;
+    width: 50vw;
+    top: 1vh;
+    transform: translateX(calc(50% - 12.5%));
+}
+#details .card-img-top{
+    width: 100%;
+    height: 66vh;
+}
+#details .card{
+    align-items: center;
 }

@@ -1,12 +1,12 @@
-export function buildTag(tagName, className, innerText, src){
+export function buildTag(tagName, className, innerText, src, isDetail){
     let tag = document.createElement(tagName);
     tag.classList = className;
 
     if(innerText) {
-        if(tagName !== "button")
+        if(tagName !== "button" && !isDetail)
             tag.innerText = removeHTMLTags(innerText).slice(0,80) + "...";
         else
-            tag.innerText = innerText;
+            tag.innerText = removeHTMLTags(innerText);
     }
     
     if(src) tag.src = src;
