@@ -10,14 +10,31 @@
 <body>
     <div class="container bg-primary vh-100">
         <div class="row">
-            <div id="incomeGroup" class="col-6">
-                <h1 class="text-center">Income</h1>
-                <div id="income">
-
-                </div>
+            <div class="col-1 vh-100 bg-dark">
+                <button onclick="localStorage.clear()">Reset local sotrage</button>
+                <button id="testAdd">Add Sample Data</button>
             </div>
-            <div class="col-6">
-                <h1 class="text-center">Expenses</h1>
+            <div class="col-11">
+                <div class="row">
+                    <div id="incomeGroup" class="col">
+                        <h1 class="text-center">Income</h1>
+                        <div id="income"></div>
+                        <div id="incomeSummary" style="width: 360px;" class="input-group">
+                            <span class="form-control">Income this month:</span>
+                            <span class="input-group-text">$</span>
+                            <span style="width: 120px;" class="input-group-text"></span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h1 class="text-center">Expenses</h1>
+                        <div id="expenses"></div>
+                        <div id="expensesSummary" style="width: 360px;" class="input-group">
+                            <span class="form-control">Income this month:</span>
+                            <span class="input-group-text">$</span>
+                            <span style="width: 120px;" class="input-group-text"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,9 +1,20 @@
 class app{
     constructor(){
-        this.incomeData = [];
-        this.expensesData = [];
+        this.incomeData = {name: "incomeData", values: []};
+        this.expensesData = {name: "expensesData", values: []};
         this.currency = "PLN";
-        this.render("income",this.incomeData);
+        this.loadLocalStorageData();
+        this.render("income", this.incomeData);
+        this.render("expenses", this.expensesData);
+
+    }
+    loadLocalStorageData(){
+        if(localStorage.incomeData != undefined){
+            this.incomeData = JSON.parse(localStorage.incomeData);
+        }
+        if(localStorage.expensesData != undefined){
+            this.expensesData = JSON.parse(localStorage.expensesData);
+        }
     }
     createMoneyItem(name, value){
         return {
@@ -12,32 +23,36 @@ class app{
             value: value
         }
     }
-    addIncome(name, value){
-        this.incomeData.push(this.createMoneyItem(name, value));
-    }
-    addExpense(name, value){
-        this.expensesData.push(this.createMoneyItem(name, value));
+    applyMoney(list, name, value){
+        list.values.push(this.createMoneyItem(name, value));
+        localStorage.setItem(list.name, JSON.stringify(list));
     }
     addWeirdDate(){
-        this.incomeData.push({date: new Date(2022,5,25),name: "XDDD", value: 250});
+        this.incomeData.values.push({date: new Date(2022,5,25),name: "XDDD", value: 250});
     }
     getValuesInCertainTime(data, startDate, endDate){
         return data.filter(({date}) => date.valueOf() > startDate.valueOf() && date.valueOf() < endDate.valueOf());
     }
+    getSummary(list){
+        let sum = 0
+        list.values.forEach((item) => sum += item.value);
+        return  sum; 
+    }
     getFinalValue(){
-        let income = this.incomeData.reduce((sum, {value}) => typeof sum == "object" ? sum.value + value : sum + value);
-        let expense = this.expensesData.reduce((sum, {value}) => typeof sum == "object" ? -sum.value - value : sum - value);
+        let income = this.getSummary(this.incomeData);
+        let expense = this.getSummary(this.expensesData);
         return expense + income;
     }
     render(htmlListId, list){
         let listObject = document.getElementById(htmlListId);
         listObject.innerHTML = "";
-        list.forEach(({name, value}) => {
+        list.values.forEach(({name, value}) => {
             listObject.appendChild(createHTMLObject(name, value));
         })
-        listObject.appendChild(this.inputGroup());
+        listObject.appendChild(this.inputGroup(htmlListId, list));
+        document.getElementById(htmlListId + "Summary").querySelectorAll("span")[2].innerText = this.getSummary(list);
     }
-    inputGroup(){
+    inputGroup(htmlListId, list){
         let itemGroup = document.createElement("div");
         itemGroup.classList.add("input-group");
         let namePart = document.createElement("input");
@@ -52,12 +67,16 @@ class app{
         itemGroup.appendChild(namePart);
         itemGroup.appendChild(signPart);
         itemGroup.appendChild(valuePart);
+        // inputGroup eventListener set
         itemGroup.addEventListener("keydown",() => {
+            // add on enter click
             if(event.keyCode == 13){
                 let inputs = itemGroup.querySelectorAll("input");
-                this.addIncome(inputs[0].value, parseFloat(inputs[1].value));
-                this.render("income",this.incomeData);
-                console.log(this.incomeData)
+                // no value inputs protection
+                if(inputs[0].value != "" && inputs[1].value != ""){
+                    this.applyMoney(list, inputs[0].value, parseFloat(inputs[1].value));
+                    this.render(htmlListId, list);
+                }
             }
         });
         return itemGroup;
@@ -70,9 +89,6 @@ class app{
         <input style="width: 120px;" type="number" class="input-group-text" placeholder="0.00">
     </div>
 */
-// let incomeInputGroup = document.querySelector("#incomeInputGroup");
-// console.log(incomeInputGroup);
-// incomeInputGroup.addEventListener("keydown",() => console.log(event.keyCode));
 function createHTMLObject(name, value){
     let itemGroup = document.createElement("div");
     itemGroup.classList.add("input-group");
@@ -91,13 +107,15 @@ function createHTMLObject(name, value){
     return itemGroup;
 }
 let item = new app();
-item.addIncome("1" ,25);
-item.addIncome("2" ,80);
-item.addIncome("3" ,140);
-item.addWeirdDate();
-item.addExpense("asd" ,2.99);
-item.addExpense("asddsa" ,60.59);
-item.getFinalValue();
-console.log(item.incomeData);
-console.log(item.getValuesInCertainTime(item.incomeData, new Date(2022,6,1), new Date(2022,6,31)));
+function setTestLocalStorage(){
+    item.applyMoney(item.incomeData, "1" ,25);
+    item.applyMoney(item.incomeData, "2" ,80);
+    item.applyMoney(item.incomeData, "3" ,140);
+    item.addWeirdDate();
+    item.applyMoney(item.expensesData, "asd" ,2.4);
+    item.applyMoney(item.expensesData, "asddsa" ,60.5);
+}
+document.getElementById("testAdd").addEventListener("click", setTestLocalStorage);
 item.render("income", item.incomeData);
+item.render("expenses",item.expensesData);
+console.log(localStorage)
