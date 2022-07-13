@@ -4,7 +4,7 @@ class app{
         this.expensesData = {name: "expensesData", values: []};
         this.currency = "PLN";
         this.loadLocalStorageData();
-        this.render("income", this.incomeData);
+        this.render("income", this.filterByDate(this.incomeData, new Date("2022-07-1"), new Date("2022-07-31")));
         this.render("expenses", this.expensesData);
 
     }
@@ -28,10 +28,14 @@ class app{
         localStorage.setItem(list.name, JSON.stringify(list));
     }
     addWeirdDate(){
+        console.log("ADD")
         this.incomeData.values.push({date: new Date(2022,5,25),name: "XDDD", value: 250});
     }
-    getValuesInCertainTime(data, startDate, endDate){
-        return data.filter(({date}) => date.valueOf() > startDate.valueOf() && date.valueOf() < endDate.valueOf());
+    filterByDate(data, startDate, endDate){
+        return {name: data.name, values: data.values.filter(({date}) => {
+            let dateValue = new Date(date).valueOf();
+            return dateValue >= startDate.valueOf() && dateValue <= endDate.valueOf()
+        })};
     }
     getSummary(list){
         let sum = 0
@@ -44,6 +48,8 @@ class app{
         return expense + income;
     }
     render(htmlListId, list){
+        console.log("TO RENDER")
+        console.log(list);
         let listObject = document.getElementById(htmlListId);
         listObject.innerHTML = "";
         list.values.forEach(({name, value}) => {
@@ -108,14 +114,13 @@ function createHTMLObject(name, value){
 }
 let item = new app();
 function setTestLocalStorage(){
+    item.addWeirdDate();
     item.applyMoney(item.incomeData, "1" ,25);
     item.applyMoney(item.incomeData, "2" ,80);
     item.applyMoney(item.incomeData, "3" ,140);
-    item.addWeirdDate();
     item.applyMoney(item.expensesData, "asd" ,2.4);
     item.applyMoney(item.expensesData, "asddsa" ,60.5);
 }
 document.getElementById("testAdd").addEventListener("click", setTestLocalStorage);
-item.render("income", item.incomeData);
-item.render("expenses",item.expensesData);
-console.log(localStorage)
+//item.render("income", item.incomeData);
+//item.render("expenses",item.expensesData);
