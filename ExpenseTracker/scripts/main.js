@@ -4,8 +4,8 @@ class app{
         this.expensesData = {name: "expensesData", values: []};
         this.currency = "PLN";
         this.loadLocalStorageData();
-        this.render("income", this.filterByDate(this.incomeData, new Date("2022-07-1"), new Date("2022-07-31")));
-        this.render("expenses", this.expensesData);
+        this.render("income", this.filterByDate(this.incomeData, new Date(moment().startOf("month")), new Date(moment().endOf("month"))));
+        this.render("expenses", this.filterByDate(this.expensesData, new Date(moment().startOf("month")), new Date(moment().endOf("month"))));
 
     }
     loadLocalStorageData(){
@@ -28,8 +28,7 @@ class app{
         localStorage.setItem(list.name, JSON.stringify(list));
     }
     addWeirdDate(){
-        console.log("ADD")
-        this.incomeData.values.push({date: new Date(2022,5,25),name: "XDDD", value: 250});
+        this.incomeData.values.push({date: new Date(2022,5,25),name: "25.06 old", value: 250});
     }
     filterByDate(data, startDate, endDate){
         return {name: data.name, values: data.values.filter(({date}) => {
@@ -47,16 +46,35 @@ class app{
         let expense = this.getSummary(this.expensesData);
         return expense + income;
     }
+    renderDateFiltered(startDate, endDate){
+        this.render("income", this.filterByDate(this.incomeData, new Date(startDate), new Date(endDate)));
+        this.render("expenses", this.filterByDate(this.expensesData, new Date(startDate), new Date(endDate)));
+    }
     render(htmlListId, list){
-        console.log("TO RENDER")
-        console.log(list);
         let listObject = document.getElementById(htmlListId);
         listObject.innerHTML = "";
         list.values.forEach(({name, value}) => {
-            listObject.appendChild(createHTMLObject(name, value));
+            listObject.appendChild(this.createListItem(name, value));
         })
         listObject.appendChild(this.inputGroup(htmlListId, list));
         document.getElementById(htmlListId + "Summary").querySelectorAll("span")[2].innerText = this.getSummary(list);
+    }
+    createListItem(name, value){
+        let itemGroup = document.createElement("div");
+        itemGroup.classList.add("input-group");
+        let namePart = document.createElement("span");
+        namePart.classList.add("form-control");
+        namePart.innerText = name;
+        let signPart = document.createElement("span");
+        signPart.classList.add("input-group-text");
+        signPart.innerText = "$";
+        let valuePart = document.createElement("span");
+        valuePart.classList.add("form-control");
+        valuePart.innerText = value;
+        itemGroup.appendChild(namePart);
+        itemGroup.appendChild(signPart);
+        itemGroup.appendChild(valuePart);
+        return itemGroup;
     }
     inputGroup(htmlListId, list){
         let itemGroup = document.createElement("div");
@@ -88,31 +106,19 @@ class app{
         return itemGroup;
     }
 }
-/*
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="...">
-        <span class="input-group-text">$</span>
-        <input style="width: 120px;" type="number" class="input-group-text" placeholder="0.00">
-    </div>
-*/
-function createHTMLObject(name, value){
-    let itemGroup = document.createElement("div");
-    itemGroup.classList.add("input-group");
-    let namePart = document.createElement("span");
-    namePart.classList.add("form-control");
-    namePart.innerText = name;
-    let signPart = document.createElement("span");
-    signPart.classList.add("input-group-text");
-    signPart.innerText = "$";
-    let valuePart = document.createElement("span");
-    valuePart.classList.add("form-control");
-    valuePart.innerText = value;
-    itemGroup.appendChild(namePart);
-    itemGroup.appendChild(signPart);
-    itemGroup.appendChild(valuePart);
-    return itemGroup;
-}
 let item = new app();
+
+$('input[id="datePicker"]').daterangepicker({
+    opens: 'left',
+    startDate: moment().startOf("month"),
+    endDate: moment().endOf("month"),
+    locale: {
+        format: 'DD-MM-YYYY'
+    }
+}, function(start, end) {
+    item.renderDateFiltered(start,end);
+});
+
 function setTestLocalStorage(){
     item.addWeirdDate();
     item.applyMoney(item.incomeData, "1" ,25);
@@ -122,5 +128,3 @@ function setTestLocalStorage(){
     item.applyMoney(item.expensesData, "asddsa" ,60.5);
 }
 document.getElementById("testAdd").addEventListener("click", setTestLocalStorage);
-//item.render("income", item.incomeData);
-//item.render("expenses",item.expensesData);

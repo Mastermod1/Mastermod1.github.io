@@ -10,6 +10,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <!-- https://www.daterangepicker.com/ -->
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <title>Expense tracker</title>
 </head>
@@ -24,13 +26,6 @@
                 <div style="height: 35px;" class="row text-center bg-dark">
                     <div>
                         <input type="text" id="datePicker">
-                        <script type="text/javascript">
-                            $('input[id="datePicker"]').daterangepicker({
-                                opens: 'left'
-                            }, function(start, end, label) {
-                                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-                            });
-                        </script>
                     </div>
                 </div>
                 <div class="row">
