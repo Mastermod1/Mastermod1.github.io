@@ -178,7 +178,6 @@
             alert.style.display = "none";
         }
         function generatePasswd(){
-            // DOM ELEMENTS
             let smlLett = document.getElementById("smlLett").checked;
             let bigLett = document.getElementById("bigLett").checked;
             let numb = document.getElementById("numb").checked;
@@ -186,14 +185,14 @@
             let length = document.getElementById("length").value;
             let alert = document.getElementById("alert");
             let result = document.getElementById("result");
-            // Elements
+
             let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             let lowercase = "abcdefghijklmnopqrstuvwxyz";
             let numbers = "0123456789";
             let sign = "!@#$%^&*_-,./?";
             let mixed = new Array();
             let password = "";
-            // Password elements
+
             if(smlLett)
                 mixed.push(lowercase);
             if(bigLett)
@@ -202,23 +201,24 @@
                 mixed.push(numbers);
             if(special)
                 mixed.push(sign);
-            // Set max length
-            if(length > 128){
+            if(length > 128)
                 length = 128;
-            }
-            // Random signs
+
             for(let i = 0; i < length; i++){
                 let setNumber = random(0,mixed.length);
                 let charNum = random(0,mixed[setNumber].length);
                 password += mixed[setNumber][charNum];
             }
+
             result.innerHTML = password;
             alert.style.display = "block";
         }
+
         function copyToClipboard(){
             let result = document.getElementById("result");
             navigator.clipboard.writeText(result.innerHTML);
         }
+
         function random(min,max){
             return Math.floor(Math.random() * (max - min)) + min;
         }

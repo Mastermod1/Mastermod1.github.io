@@ -144,31 +144,20 @@
         let colorsVisable = 0;
         document.addEventListener("paste",pastFile);
         imageCanvas.addEventListener('click', colorPicker);
-        // Toggle eyedropper
-        // function toggleEyeDropper(){
-        //     if(!eyeDropBool){
-        //         imageCanvas.addEventListener('click', colorPicker);
-        //         eyeDropBool = true;
-        //     } else {
-        //         imageCanvas.removeEventListener('click',colorPicker);
-        //          eyeDropBool = false;
-        //     }
-        //     imageCanvas.classList.toggle("crosshair");
-        // }
-        // Upload function
+
         function loadFile(event) {
             drawBitMap(event.target.files[0]);
-            values.innerHTML = ""; // Reset before added colors
+            values.innerHTML = "";
             colorsVisable = 0
             values.style.overflowY = "hidden";          
         };
-        // Paste function
+
         function pastFile(){
             navigator.clipboard.read().then((data) => {
                 if(data[0].types.includes("image/png")){
                     data[0].getType("image/png").then((img)=>{     
                         drawBitMap(img);
-                        values.innerHTML = ""; // Reset before added colors
+                        values.innerHTML = "";
                         colorsVisable = 0
                         values.style.overflowY = "hidden"; 
                     }); 
@@ -177,14 +166,14 @@
                 }
             });
         };
-        // Function to change blob to bitmap and then to draw it on Canvas
+
         function drawBitMap(blob){
             createImageBitmap(blob).then((img) => {
                 ctx.clearRect(0, 0, imageCanvas.width, imageCanvas.height);
                 ctx.drawImage(img,0,0,800,800);
             });
         }
-        // Color picker function
+
         function colorPicker(e){
             let mousePos = getCanvasMousePos(e);
             let imgData = ctx.getImageData(Math.trunc(mousePos.x),Math.trunc(mousePos.y),1,1);
@@ -192,7 +181,6 @@
             let rgbColorHTML = "rgb(" + rgbColor + ")";
             let hexColor = "#" + (imgData.data[0].toString(16) + "" + imgData.data[1].toString(16) + "" + imgData.data[2].toString(16)).toUpperCase()
             
-            //Check if color is already on list            
             if(!rgbColorList.includes(rgbColor) && !hexColorList.includes(hexColor)){
                 colorsVisable++;
                 let div = document.createElement("div");
@@ -231,6 +219,7 @@
                 values.style.height = "650px";
             }
         }
+
         function copyClick(){
             let color = this.getAttribute("value");
             let type = this.getAttribute("dataType");
@@ -245,6 +234,7 @@
             setTimeout(function(){span.classList.toggle("copyAnim"); span.style.opacity="0"},500);
             span.classList.toggle("copyAnim");
         }
+
         function getCanvasMousePos(e){
             let rect = imageCanvas.getBoundingClientRect();
             return {

@@ -91,12 +91,10 @@ class app{
         itemGroup.appendChild(namePart);
         itemGroup.appendChild(signPart);
         itemGroup.appendChild(valuePart);
-        // inputGroup eventListener set
+
         itemGroup.addEventListener("keydown",() => {
-            // add on enter click
             if(event.keyCode == 13){
                 let inputs = itemGroup.querySelectorAll("input");
-                // no value inputs protection
                 if(inputs[0].value != "" && inputs[1].value != ""){
                     this.applyMoney(list, inputs[0].value, parseFloat(inputs[1].value));
                     this.render(htmlListId, list);
